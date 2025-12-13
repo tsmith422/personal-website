@@ -1,46 +1,63 @@
 window.onload = loadStyle;
 
-function loadStyle() {
-    var stylesheet = document.getElementById('stylesheet');
-    var toggleSwitch = document.getElementById('toggleSwitch');
-    var linkedin = document.getElementById('linkedin');
-    var github = document.getElementById('github');
-    var favicon = document.getElementById('favicon');
-    var style = localStorage.getItem('style');
-    if (style === 'style2') {
-        stylesheet.setAttribute('href', 'style2.css');
-        stylesheet.href = 'style2.css';
-        linkedin.setAttribute('src', 'assets/linkedin-black.png');
-        github.setAttribute('src', 'assets/github-black.png');
-        favicon.setAttribute('href', 'assets/favicon-light.png')
-        toggleSwitch.checked = true;
-    } else {
-        stylesheet.setAttribute('href', 'style1.css');
-        linkedin.setAttribute('src', 'assets/linkedin.png');
-        github.setAttribute('src', 'assets/github.png');
-        favicon.setAttribute('href', 'assets/favicon-dark.png')
-        toggleSwitch.checked = false;
-    }
+function _getPrefix() {
+  // if the page is inside the pages/ folder we need "../" before css/ and assets/
+  return window.location.pathname.includes('/pages/') ? '../' : '';
+}
 
-    toggleSwitch.addEventListener('change', toggleStyle);
+function loadStyle() {
+  var stylesheet = document.getElementById('stylesheet');
+  var toggleSwitch = document.getElementById('toggleSwitch');
+  var linkedin = document.getElementById('linkedin');
+  var github = document.getElementById('github');
+  var favicon = document.getElementById('favicon');
+  var style = localStorage.getItem('style');
+
+  const prefix = _getPrefix();
+  const cssPrefix = prefix + 'css/';
+  const assetsPrefix = prefix + 'assets/';
+
+  if (style === 'style2') {
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style2.css');
+    if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'linkedin-black.png');
+    if (github) github.setAttribute('src', assetsPrefix + 'github-black.png');
+    if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-light.png');
+    if (toggleSwitch) toggleSwitch.checked = true;
+  } else {
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style1.css');
+    if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'linkedin.png');
+    if (github) github.setAttribute('src', assetsPrefix + 'github.png');
+    if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-dark.png');
+    if (toggleSwitch) toggleSwitch.checked = false;
+  }
+
+  if (toggleSwitch) toggleSwitch.addEventListener('change', toggleStyle);
 }
 
 function toggleStyle() {
-    var stylesheet = document.getElementById('stylesheet');
-    var toggleSwitch = document.getElementById('toggleSwitch');
-    var linkedin = document.getElementById('linkedin');
-    var github = document.getElementById('github');
-    if (toggleSwitch.checked) {
-        stylesheet.setAttribute('href', 'style2.css');
-        linkedin.setAttribute('src', 'assets/linkedin-black.png');
-        github.setAttribute('src', 'assets/github-black.png');
-        favicon.setAttribute('href', 'assets/favicon-light.png')
-        localStorage.setItem('style', 'style2');
-    } else {
-        stylesheet.setAttribute('href', 'style1.css');
-        linkedin.setAttribute('src', 'assets/linkedin.png');
-        github.setAttribute('src', 'assets/github.png');
-        favicon.setAttribute('href', 'assets/favicon-dark.png')
-        localStorage.setItem('style', 'style1');
-    }
+  var stylesheet = document.getElementById('stylesheet');
+  var toggleSwitch = document.getElementById('toggleSwitch');
+  var linkedin = document.getElementById('linkedin');
+  var github = document.getElementById('github');
+  var favicon = document.getElementById('favicon');
+
+  const prefix = _getPrefix();
+  const cssPrefix = prefix + 'css/';
+  const assetsPrefix = prefix + 'assets/';
+
+  if (!toggleSwitch) return;
+
+  if (toggleSwitch.checked) {
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style2.css');
+    if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'linkedin-black.png');
+    if (github) github.setAttribute('src', assetsPrefix + 'github-black.png');
+    if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-light.png');
+    localStorage.setItem('style', 'style2');
+  } else {
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style1.css');
+    if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'linkedin.png');
+    if (github) github.setAttribute('src', assetsPrefix + 'github.png');
+    if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-dark.png');
+    localStorage.setItem('style', 'style1');
+  }
 }

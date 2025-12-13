@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Portfolio</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" id="stylesheet" href="style1.css">
+        <link rel="icon" id="favicon" href="assets/favicon-dark.png">
+    </head>
+    <body>
+        <header class="banner">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <p>TS</p>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-me.html">About Me</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="qualifications.html">Qualifications</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><label class="switch">
+                            <input type="checkbox" id="toggleSwitch">
+                            <span class="slider"></span>
+                        </label> </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="subpage-hero">
+            <h1>Portfolio</h1>
+        </section>
+        <section id="portfolio-section">
+            <div class="portfolio-container">
+                <img src="assets/discord-log.png" alt="Rev Bot Image"
+                    class="portfolio-image">
+                <div class="portfolio-content">
+                    <h1>Rev Bot</h1>
+                    <p>I was tasked by the Texas Engineering Academies Student
+                        Organization to create a Discord bot for automating role
+                        assignments after becoming an officer. Despite my Python
+                        knowledge, I had never created a Discord bot or worked
+                        with an API, making this a great learning
+                        opportunity.</p>
+                    <p>The organization requires a one-time payment for
+                        students to access important Discord channels, and
+                        members who pay gain the "Verified" role. The bot
+                        uses the Google Sheets API to automate role
+                        assignments by verifying members' information from a
+                        form saved on a spreadsheet.</p>
+                    <p>This method allows real-time
+                        updates and immediate verification, along with 24/7
+                        uptime due to the process running on a rasbian
+                        comparable microcomputer. While the bot
+                        primarily handles new member authentication, I plan
+                        to expand its functionality for other tasks and
+                        ensure the code is understandable for future
+                        officers.</p>
+                    <a
+                        href="https://github.com/tsmith422/academies-authenticator-bot"
+                        target="_blank"
+                        class="repo-button">Repository</a>
+                </div>
+            </div>
+        </section>
+        <section id="portfolio-section">
+            <div class="portfolio-container">
+                <img src="assets/wordle1.png" alt="Wordle Image"
+                    class="portfolio-image">
+                <div class="portfolio-content">
+                    <h1>Wordle</h1>
+                    <p>In my sophomore year of college, I created my first
+                        visual interactive program using JavaFX and
+                        SceneBuilder, which made the design process enjoyable
+                        and straightforward. With my Java experience, I focused
+                        on adding features and creating a visually appealing
+                        <a
+                            href="https://www.nytimes.com/games/wordle/index.html"
+                            target="_blank">Wordle</a>
+                        game. </p>
+                    <p>The project involved selecting random words
+                        through Java File IO, using a complex data structure for
+                        letter storage, and ensuring the application was
+                        user-friendly. Additionally, I implemented player
+                        statistics tracking, including wins/losses, number of
+                        games played, and streaks, all accessible at any
+                        time.</p>
+                    <a
+                        href="https://github.com/tsmith422/wordle-javaFX"
+                        target="_blank"
+                        class="repo-button">Repository</a>
+                </div>
+            </div>
+        </section>
+        <section id="portfolio-section">
+            <div class="portfolio-container">
+                <img src="assets/data2.png" alt="Rev Bot Image"
+                    class="portfolio-image">
+                <div class="portfolio-content">
+                    <h1>2023 Datathon</h1>
+                    <p>I participated in the <a
+                            href="https://tamu-datathon-2023.devpost.com/"
+                            target="_blank">2023
+                            TAMU Datathon</a>, my first-ever
+                        datathon, where our team trained an AI model to predict
+                        patient survival based on their condition. We worked
+                        with a flawed dataset in CSV format, cleaned and
+                        adjusted the data, and used recursive feature
+                        elimination to identify key survival factors.</p>
+                    <p>This enabled us to train the Keras Sequential Model for
+                        predictions, which were then scored for accuracy.
+                        Despite our code not being the most accurate, our
+                        detailed writeup helped our team, consisting of Arul
+                        Dhar, Bao Nguyen, and myself, to be selected as one of
+                        the winners of the Datathon.</p>
+                    <a
+                        href="https://github.com/tsmith422/tamu-datathon-2023"
+                        target="_blank"
+                        class="repo-button">Repository</a>
+                </div>
+            </div>
+        </section>
+        <footer id="contact-footer">
+            <!-- srcs = https://www.linkedin.com/ | https://github.com/ -->
+            <a href="https://www.linkedin.com/in/smithtas" target="_blank"><img
+                    src="assets/linkedin.png" class="social-icon"
+                    id="linkedin">
+            </a>
+            <a href="https://github.com/tsmith422" target="_blank"><img
+                    src="assets/github.png" class="social-icon"
+                    id="github"></a>
+            <p>&copy; 2024 Taylor Smith</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

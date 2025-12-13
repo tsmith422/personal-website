@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Me</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+        body {
+            background-color: #1c1c1c; /* Very dark grey background */
+            color: #d3d3d3; /* Very light grey text */
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        header {
+            width: 98%;
+            background-color: #1c1c1c;
+            position: fixed;
+            top: 0;
+            left: 1%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+            border: 2px solid #d3d3d3;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #d3d3d3;
+            margin: 0 15px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero {
+            background-image: url('assets/Banner-medium.png');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px; /* Offset the fixed header */
+        }
+
+        .hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 48px;
+            color: #d3d3d3;
+        }
+
+        section {
+            padding: 50px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        section img {
+            max-width: 50%;
+            margin: 0 20px;
+            border-radius: 10px;
+            background-color: #d3d3d3;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1c1c1c;
+        }
+
+        footer a {
+            margin: 0 10px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #d3d3d3;
+        }
+
+        footer img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+    </head>
+    <body>
+
+        <header>
+            <div class="logo"
+                onclick="window.location.href='index.html'">TS</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about-me.html">About Me</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="qualifications.html">Qualifications</a>
+                <a href="service.html">Service</a>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <h1>About Me</h1>
+        </div>
+
+        <section>
+            <div>
+                <h2>How it started</h2>
+                <p>The first time I “programmed” was in elementary school, we
+                    had a computer lab where we messed around with website
+                    <a href="https://scratch.mit.edu/" target="_blank">Scratch</a>. I liked
+                    playing games
+                    growing up and realizing I
+                    had the chance to try and make my own was exciting for
+                    me!<br><br>
+
+                    Further down the line, in my junior year of high school, I
+                    finally took my first actual programming course; we learned
+                    Java and I caught on quite quickly. My teacher saw this and,
+                    by the end of the year, asked if I would be a part of the
+                    <a href="https://www.uiltexas.org/" target="_blank">University
+                        Interscholastic League (UIL)</a>.
+                </p>
+            </div>
+            <img src="assets/me3.jpeg" alt="Me">
+        </section>
+
+        <section>
+            <!-- src = https://www.uiltexas.org/ -->
+            <img src="assets/UIL.png" alt="UIL">
+            <div>
+                <p>The following year I participated on our school’s Computer
+                    Science team where we ranked first in our region and second
+                    in our state; individually I placed 13th in our state.
+                    Unfortunately, that was my senior year of high school so
+                    that was the only year I participated in academic UIL;
+                    however, it was an extremely fun and competitive challenge
+                    that made my passion for programming flourish.</p>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>College</h2>
+                <p>During my first year of college I took an Engineering
+                    Computing course which taught me python, this was one of the
+                    most interesting courses I have taken because the main focus
+                    was working together with a group of people in order to
+                    solve complex coding problems. The language itself came easy
+                    to me but learning how to work with others, especially on a
+                    project that we had to work on over the course of various
+                    weeks, was extremely valuable.<br><br>
+
+                    After my first year, I applied to be a computer science
+                    major at Texas A&M University, College of Engineering. Since
+                    I had a 4.0 GPA and my personal essays were strong enough, I
+                    was admitted to the department of Computer Science for a CS
+                    major! This was an extremely exciting part of my life
+                    because I know that only a very small percentage of people
+                    who apply to be a CS Major at A&M actually get in.
+                </p>
+            </div>
+            <!-- src = https://www.dallascollege.edu/cd/partnerships/tamu-engineering/PublishingImages/TAMU_COE_primary_horiz_RGB.png -->
+            <img src="assets/tamu-eng.png" alt="TAMU Engineering">
+        </section>
+
+        <section>
+            <img
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+                alt="Coding">
+            <div>
+                <p>During my second year, I spent two semesters taking the most
+                    difficult computer science courses I have ever taken:
+                    Discrete Mathematics, Data Structures and Algorithms, and
+                    Computer Architecture. Before this, I was usually able to
+                    get by on just the information from lectures alone; I rarely
+                    had to sit down and study material. However, these courses
+                    were much more difficult than I anticipated; there was
+                    actually a time where I was at a failing grade in each of
+                    these classes midway through each semester. Luckily, I was
+                    able to pull back and manage high A’s in my Data Structs and
+                    Computer Architecture courses, my Discrete Mathematics,
+                    however, was only a high B. This semester taught me a lot
+                    about what challenges I am going to face moving forward in
+                    CS, but more importantly, it taught me how to properly study
+                    and manage my time in general.</p>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>Extracurricular</h2>
+                <p>In high school, I was part of the <a
+                        href="https://www.nationalhonorsociety.org/" target="_blank">National
+                        Honors Society</a> for
+                    two years, volunteering over 100 hours for multiple
+                    organizations. During my time in UIL Computer Science, my
+                    mathematics teacher also asked me to be on the UIL
+                    calculator team. The team as a whole did not make it very
+                    far; however, individually I came 1st in our district and
+                    5th place in our region. Unfortunately, only the top four
+                    qualified for state so I was not able to compete at the
+                    state level, but it was still a very fun experience for my
+                    first year doing it.</p>
+            </div>
+            <!-- src = https://www.nationalhonorsociety.org/ -->
+            <img src="assets/nhs.png" alt="NHS">
+        </section>
+
+        <section>
+            <img src="assets/teaso-nb.png" alt="TEASO">
+            <div>
+                <p>For my first year of college, I was admitted to the <a
+                        href="https://engineering.tamu.edu/academics/academies/index.html" target="_blank">Texas
+                        A&M
+                        Chevron Engineering Academies</a>. During this time,
+                    former students of the Academies became ambassadors of the
+                    program and would often talk to us current students about
+                    what a positive thing the academies were for them. We were
+                    able to ask them many questions about their experience in
+                    the program, how the main campus is, and what they’re
+                    currently doing and hope to do themselves. They were great
+                    resources, as an incoming transition student, so I reached
+                    out to them to see if I could become an ambassador myself. I
+                    submitted my application and days later I actually received
+                    a call asking if I would be willing to work on more projects
+                    besides just being an ambassador.<br><br>
+
+                    Due to my knowledge of computer science, they asked if I was
+                    willing to become, not only an ambassador, but an officer
+                    for the association. I would work on the communications
+                    technologies within the organization as well as working
+                    alongside the treasurer to create a fully automated
+                    verification system the org could use for new members. This
+                    seemed like an extremely daunting task and position to
+                    immediately jump to, but I decided to just go for it because
+                    I probably wouldn’t get another opportunity as good as this
+                    one. If that project sounded interesting to you by the way,
+                    I have it listed in my portfolio if you would like to check
+                    it out.</p>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>AI's Prompt</h2>
+                <p>Can you create and html page and whenever you have to style
+                    something with css, do it inside the html file:
+                    The background color should be a very dark grey but not
+                    black, all text should be a very light grey but not white.
+                    The headers should be font inter and the body should be font
+                    dm sans. Make sure all images have slightly curved edges and
+                    style all images so their background color is the same very
+                    light grey<br><br>
+
+                    please make a banner at the top of the page that covers 98%
+                    of the width with no offset and moves with the page as it
+                    scrolls, on the left side of the banner have a TS surrounded
+                    by the outline of a circle and when you click it, it takes
+                    you to index.html but do not visually show it is a link. On
+                    the right side of the page have Home, About Me, Portfolio,
+                    Qualifications, and Service written out that link
+                    respectively to: index.html, about-me.html, portfolio.html,
+                    qualifications.html, and service.html<br><br>
+
+                    below that have a small hero section with a background image
+                    src="assets/Banner-medium.png" and the words About Me
+                    centered in the middle of the image, make sure the About Me
+                    is the largest heading on the page and it is centered
+                    vertically on the background image<br><br>
+
+                    below that have a header (How it started) with a paragraph
+                    below it and right next to that an image (make sure this is
+                    all centered to the page) src="assets/me3.jpeg"
+                    then below that have a picture src="assets/UIL.png" and
+                    right to the right of it have a paragraph<br><br>
+
+                    then have another header (College) below that with a
+                    paragraph below it and right next to that an image (make
+                    sure this is all centered to the page)
+                    src="assets/tamu-eng.png"
+                    then below that have a picture
+                    src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+                    and right to the right of it have a paragraph<br><br>
+
+                    then have another header (Extracurricular) below that with a
+                    paragraph below it and right next to that an image (make
+                    sure this is all centered to the page)
+                    src="assets/nhs.png"
+                    then below that have a picture src="assets/teaso-nb.png"
+                    and right to the right of it have a paragraph<br><br>
+
+                    then have a header (AI's Prompt) with a paragraph below
+                    it<br><br>
+
+                    finally create a footer that is centered which has a
+                    clickable picture src="assets/linkedin.png" which links
+                    to "linkedin.com/in/smithtas" and to the right of that have
+                    a clickable picture src="assets/github.png" that links to
+                    "github.com/tsmith422". Both of these should be surrounded
+                    by a round edged square with a white outline</p>
+            </div>
+        </section>
+
+        <footer>
+            <!-- srcs = https://www.linkedin.com/ | https://github.com/ -->
+            <a href="https://linkedin.com/in/smithtas" target="_blank"><img
+                    src="assets/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/tsmith422" target="_blank"><img
+                    src="assets/github.png" alt="GitHub"></a>
+        </footer>
+
+    </body>
+</html>

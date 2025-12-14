@@ -9,6 +9,14 @@
     --muted: #7f8c8d;
     --border: 4px solid var(--text);
     --gap: 20px;
+
+    /* Modern, material-ish nav link styles */
+    --nav-accent: #1d4ed8;            /* accent color (blue) */
+    --nav-accent-strong: #0f4bd8;
+    --nav-accent-glow: rgba(29,78,216,0.18);
+    --nav-ghost: rgba(255,255,255,0.03);
+    --nav-border: rgba(255,255,255,0.12); /* increased contrast */
+    --nav-text-strong: #f6f7f9; /* brighter link text */
 }
 
 * { box-sizing: border-box; }
@@ -69,31 +77,90 @@ p { margin: 0 0 1rem 0; color: var(--text); }
     display: block;
 }
 
-.nav-links {
-    margin-left: auto;
-    display: flex;              /* desktop layout */
-    align-items: center;
+/* Remove underline from logo link and ensure no text decoration */
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
 }
 
+/* Nav links container */
+.nav-links { margin-left: auto; display: flex; align-items: center; }
+
+/* list layout */
 .nav-links ul {
     list-style: none;
     margin: 0;
     padding: 0 6px;
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: center;
     flex-wrap: wrap;
 }
 
+/* pill style links (desktop) */
+.nav-links li { list-style: none; }
 .nav-links a {
-    color: var(--text);
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    color: var(--nav-text-strong);
+    background: transparent;
+    border-radius: 999px;
+    font-weight: 700;
     font-size: 0.95rem;
-    padding: 6px 8px;
-    border-radius: 6px;
+    text-decoration: none;                     /* ensure no underline */
+    border: 1px solid var(--nav-border);
+    transition: background 260ms cubic-bezier(.22,.9,.28,1), transform 200ms ease, box-shadow 260ms, color 180ms;
+    -webkit-font-smoothing: antialiased;
 }
 
-.nav-links a:hover { text-decoration: underline; }
+/* hover: subtle glow + lift with clearer contrast */
+.nav-links a:hover {
+    background: linear-gradient(180deg, var(--nav-ghost), rgba(255,255,255,0.04));
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.55);
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.16);
+}
+
+/* pressed state */
+.nav-links a:active { transform: translateY(-1px); }
+
+/* active / current page indicator - stronger accent */
+.nav-links a[aria-current="page"], .nav-links a.active {
+    color: #ffffff;
+    background: linear-gradient(90deg, rgba(29,78,216,0.22), rgba(99,102,241,0.08));
+    border-color: var(--nav-accent-glow);
+    box-shadow: 0 10px 30px rgba(29,78,216,0.16);
+}
+
+/* focus styles for keyboard users */
+.switch input:focus + .slider {
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.45),
+        0 0 0 5px rgba(99,102,241,0.10);
+}
+
+/* keyboard accessibility */
+.nav-links a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(29,78,216,0.14);
+    border-radius: 12px;
+}
+
+/* small icon support (if you add icons inside links) */
+.nav-links a .nav-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* ensure the switch doesn't look like a nav button */
+.nav-links li .switch { margin-left: 4px; margin-right: 4px; }
+.nav-links li .switch .slider { border-radius: 999px; }
 
 /* Switch */
 /* Improved, higher-contrast theme toggle switch */
@@ -174,13 +241,6 @@ p { margin: 0 0 1rem 0; color: var(--text); }
 /* checked = light mode -> filled sun (solid, warm color) */
 .switch input:checked + .slider::after {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23f59e0b' d='M6.76 4.84 5 3.07 3.07 5 4.84 6.76 6.76 4.84zM1 11h3v2H1v-2zm10-9h2v3h-2V2zm7.24 2.84 1.79-1.79L20.07 3l-1.79 1.79 1.79 1.79zM20 11v2h3v-2h-3zM12 6a6 6 0 100 12 6 6 0 000-12z'/></svg>");
-}
-
-/* focus styles for keyboard users */
-.switch input:focus + .slider {
-    box-shadow:
-        0 6px 18px rgba(0,0,0,0.45),
-        0 0 0 5px rgba(99,102,241,0.10);
 }
 
 /* slightly reduce icon opacity in dark (unchecked) for contrast but keep visible */

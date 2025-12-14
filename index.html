@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Home</title>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <title>Home</title>
         <link rel="stylesheet" id="stylesheet" href="css/style1.css">
         <link rel="icon" id="favicon" href="assets/favicon-dark.png">
     </head>
@@ -13,7 +14,13 @@
                     <p>TS</p>
                 </div>
             </a>
-            <nav class="nav-links">
+
+            <!-- mobile hamburger button -->
+            <button class="hamburger" aria-label="Menu" aria-expanded="false" type="button">
+                <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+            </button>
+
+            <nav class="nav-links" aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="pages/about-me.html">About Me</a></li>

@@ -276,29 +276,71 @@ main, .hero, .subpage-hero, .wid, #tech-stack, section, footer {
     object-fit: cover;
 }
 
-/* Wide intro section */
+/* WID: full-width panel with centered inner content and consistent layout
+   Consolidated single definition to avoid duplicate rules. */
 .wid {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: 28px 16px;
-    background-color: var(--panel);
-    align-items: center;
-    text-align: left;
+    width: 100%;
+    background-color: var(--panel);   /* panel spans the full page width */
+    padding: 28px 0;                  /* vertical padding for the full-width band */
+    box-sizing: border-box;
+    color: var(--text);
 }
 
+/* centered constrained container inside the full-width panel */
+.wid-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;                  /* horizontal gutter */
+    display: flex;
+    gap: 18px;
+    align-items: stretch;             /* allow children to stretch to same height */
+    box-sizing: border-box;
+}
+
+/* image / text sizing inside the centered container */
 .wid-image {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
+    flex: 0 0 40%;                    /* occupy ~40% of the row on wide screens */
+    width: 40%;
+    height: 100%;                     /* match the height of the .wid-inner container */
+    max-height: 80vh;                 /* cap so it doesn't grow beyond viewport too much */
     border-radius: 12px;
     object-fit: cover;
+    display: block;
+}
+.wid-text {
+    flex: 1 1 auto;
+    min-width: 0;                     /* prevents overflow of long text */
+    display: flex;
+    align-items: stretch;             /* make inner card stretch to full height */
+}
+/* ensure the card inside .wid-text fills the available height so both columns match */
+.wid-text .text-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.wid-text {
-    max-width: 900px;
+/* text-card stays full width inside the wid-text */
+.text-card {
+    background: transparent;          /* card uses the panel background already provided by .wid */
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.55);
     width: 100%;
-    padding: 0 8px;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* divider: almost full-width within the card, centered with equal side gaps */
+.text-card .card-divider {
+    width: calc(100% - 40px);   /* leaves ~20px gap on each side inside the card */
+    height: 4px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+    margin: 8px 20px 12px;
 }
 
 /* Tech stack */
@@ -488,4 +530,59 @@ main, .hero, .subpage-hero, .wid, #tech-stack, section, footer {
     .nav-links ul { gap: 8px; font-size: 0.95rem; }
     .hero { padding-top: 90px; }
     .social-icon { width: 36px; height: 36px; }
+}
+
+/* simple card for paragraph blocks inside sections (heading + underline + content) */
+.text-card {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+    max-width: 900px;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* heading inside the card */
+.text-card .card-heading {
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.125rem, 2.4vw, 1.6rem);
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* thin accent divider under heading */
+.text-card .card-divider {
+    width: calc(100% - 8px);
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+    margin: 8px 0 12px 0;
+}
+    
+/* paragraphs spacing */
+.text-card p { margin: 0 0 12px 0; color: var(--text); }
+
+/* layout tweak: ensure card fits inside wid layout */
+.wid { display:flex; gap:18px; align-items:flex-start; padding:28px 16px; }
+.wid-image { flex: 0 0 400px; max-width: 40%; border-radius:12px; object-fit:cover; }
+.wid-text { flex: 1 1 auto; }
+
+
+/* responsive: stack on small screens */
+@media (max-width:700px) {
+    /* Keep the full-width panel but stack the inner container's children */
+    .wid { padding:20px 12px; }
+
+    /* if using the centered container, force it to stack vertically */
+    .wid-inner { flex-direction: column; padding: 0; gap: 14px; align-items: stretch; }
+
+    /* make image full-width above the text */
+    .wid-image { width: 100%; max-width: 100%; flex: none; }
+    .wid-text { width: 100%; }
+
+    .text-card { padding: 14px; }
+    .text-card .card-divider { width: calc(100% - 8px); height: 3px; margin: 8px 0 12px 0; }
 }

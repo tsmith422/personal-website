@@ -255,7 +255,7 @@ main, .hero, .subpage-hero, .wid, #tech-stack, section, footer {
 
 /* Hero */
 .hero {
-    background-image: url('../assets/Banner-large.png');
+    background-image: url('../assets/banners/Banner-large.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -343,14 +343,59 @@ main, .hero, .subpage-hero, .wid, #tech-stack, section, footer {
     margin: 8px 20px 12px;
 }
 
-/* Tech stack */
-#tech-stack { text-align: center; padding: 24px 16px; }
-#tech-stack ul {
-    margin-top: 8px;
-    list-style: disc;
-    padding-left: 20px;
-    display: inline-block;
-    text-align: left;
+/* Tech stack - visual grid of badges */
+#tech-stack { padding: 28px 16px; }
+#tech-stack .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 12px; text-align: center; }
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+    align-items: stretch;
+}
+.tech-item {
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius: 12px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    transition: transform 240ms cubic-bezier(.22,.9,.28,1), box-shadow 240ms;
+}
+.tech-item:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(0,0,0,0.55); }
+.tech-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5) inset;
+}
+.tech-label { font-weight: 700; color: var(--text); font-size: 0.95rem; text-align: center; }
+
+/* individual brand-ish colors */
+.tech-python .tech-logo { background: linear-gradient(135deg,#306998,#ffd43b); color:#111; }
+.tech-cpp .tech-logo { background: linear-gradient(135deg,#00599C,#2a2d8f); }
+.tech-java .tech-logo { background: linear-gradient(135deg,#5382a1,#f8981d); }
+.tech-js .tech-logo { background: linear-gradient(135deg,#f0db4f,#f7df1e); color:#111; }
+.tech-web .tech-logo { background: linear-gradient(135deg,#e34f26,#264de4); }
+.tech-psql .tech-logo { background: linear-gradient(135deg,#336791,#2ecc71); }
+.tech-git .tech-logo { background: linear-gradient(135deg,#f05032,#e84d31); }
+.tech-linux .tech-logo { background: linear-gradient(135deg,#333333,#00aaff); }
+.tech-rails .tech-logo { background: linear-gradient(135deg,#cc0000,#8b0000); }
+.tech-jira .tech-logo { background: linear-gradient(135deg,#0052cc,#2684ff); }
+
+@media (max-width:700px) {
+    .tech-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .tech-logo { width: 48px; height: 48px; }
 }
 
 /* Portfolio, resume, services - responsive containers */
@@ -567,7 +612,8 @@ main, .hero, .subpage-hero, .wid, #tech-stack, section, footer {
 
 /* layout tweak: ensure card fits inside wid layout */
 .wid { display:flex; gap:18px; align-items:flex-start; padding:28px 16px; }
-.wid-image { flex: 0 0 400px; max-width: 40%; border-radius:12px; object-fit:cover; }
+.wid-image { flex: 0 0 400px; max-width: 40%; border-radius:12px; object-fit:cover; box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+border: solid 1px rgba(255,255,255,0.04);}
 .wid-text { flex: 1 1 auto; }
 
 

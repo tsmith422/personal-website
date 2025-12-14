@@ -161,7 +161,7 @@ input:checked+.slider:before {
 
 .hero {
     /* src = https://www.canva.com/ */
-    background-image: url('assets/Banner-large.png');
+    background-image: url('../assets/banners/Banner-large.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -191,7 +191,7 @@ input:checked+.slider:before {
 
 .subpage-hero {
     /* src = https://www.canva.com/ */
-    background-image: url('assets/Banner-medium.png');
+    background-image: url('../assets/banners/Banner-medium.png');
     background-size: cover;
     background-position: center;
     display: flex;

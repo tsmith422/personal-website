@@ -38,13 +38,19 @@ h5 {
     font-size: 14px;
 }
 
-h6 {
-    font-size: 10px;
+/* Tech grid centering: shrink-to-content inline-grid, full-width on small screens */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 18px auto 0;
 }
 
-p a:visited {
-    color: #2980b9;
-    text-decoration: underline;
+@media (max-width:700px) {
+    .tech-grid { justify-content: center; }
+    .tech-item { flex: 1 1 110px; min-width: 110px; }
+    .tech-logo { width: 48px; height: 48px; }
 }
 
 .banner {
@@ -257,6 +263,11 @@ input:checked+.slider:before {
     color: white;
     text-align: center;
     padding: 40px 0 10px;
+}
+
+/* Render only the tech-stack GitHub logo as solid black */
+.tech-item.tech-git .tech-logo-img {
+    filter: grayscale(1) brightness(0) !important;
 }
 
 #contact-footer a {

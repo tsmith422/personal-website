@@ -8,6 +8,14 @@ body {
     color: #333;
 }
 
+/* Smooth scrolling for in-page navigation and touch devices */
+html {
+    scroll-behavior: smooth;
+    /* account for fixed header when jumping to anchors */
+    scroll-padding-top: 80px;
+    -webkit-overflow-scrolling: touch;
+}
+
 h1,
 h2,
 h3,

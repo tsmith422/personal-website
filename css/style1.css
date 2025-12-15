@@ -22,6 +22,14 @@
     /* brighter link text */
 }
 
+/* Smooth scrolling for in-page navigation and touch devices */
+html {
+    scroll-behavior: smooth;
+    /* account for fixed header when jumping to anchors */
+    scroll-padding-top: 80px;
+    -webkit-overflow-scrolling: touch;
+}
+
 * {
     box-sizing: border-box;
 }

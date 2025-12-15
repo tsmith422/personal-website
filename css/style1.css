@@ -367,6 +367,26 @@ footer {
     line-height: 1.05;
 }
 
+/* Subpage hero (smaller banner for inner pages) */
+.subpage-hero {
+    background-image: url('../assets/banners/Banner-medium.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px;
+    margin-top: 56px; /* leave space for fixed header */
+    text-align: center;
+    color: var(--text);
+}
+
+.subpage-hero h1 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.25rem, 3.0vw, 2.25rem);
+}
+
 .hero-pfp {
     width: clamp(96px, 20vw, 200px);
     height: auto;

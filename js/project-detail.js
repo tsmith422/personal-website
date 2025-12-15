@@ -8,9 +8,10 @@
     const toc = document.querySelector('#project-toc ul');
     if(!toc) return;
     toc.innerHTML = '';
-    // find headings inside .text-card elements
+    // find headings inside .text-card elements, but skip the TOC card itself
     const cards = document.querySelectorAll('#project-page .text-card');
     cards.forEach(card => {
+      if(card.closest && card.closest('#project-toc')) return; // skip TOC card
       const h = card.querySelector('.card-heading');
       if(!h) return;
       const title = h.textContent.trim();

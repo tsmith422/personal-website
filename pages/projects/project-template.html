@@ -1,91 +1,79 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Project Title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" id="stylesheet" href="../../css/style1.css">
-    <link rel="icon" id="favicon" href="../../assets/favicon-dark.png">
-  </head>
-  <body>
-    <div data-include="../../partials/header-project.html"></div>
 
-    <section class="subpage-hero">
-      <h1>Portfolio ≻ Project Title</h1>
-    </section>
+<head>
+  <title>Project Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" id="stylesheet" href="../../css/style1.css">
+  <link rel="icon" id="favicon" href="../../assets/favicon-dark.png">
+</head>
 
-    <main class="wid" id="project-page">
-      <!-- Table of contents (built dynamically) -->
-      <aside id="project-toc" class="project-toc" aria-label="Project table of contents">
-        <h4>Contents</h4>
-        <nav><ul></ul></nav>
-      </aside>
+<body>
+  <div data-include="../../partials/header-project.html"></div>
 
-      <div class="wid-inner">
-        <img src="../../assets/projects/placeholder.png" alt="Project banner" class="wid-image project-hero">
-        <div class="wid-text">
-          <!-- Intro card: title + elevator pitch -->
-          <section class="text-card" id="intro">
-            <h2 class="card-heading">Project Title</h2>
-            <div class="card-divider" aria-hidden="true"></div>
-            <p class="lead">One-sentence elevator pitch that quickly tells a visitor what this project does and why it's interesting.</p>
-          </section>
+  <section class="subpage-hero">
+    <h1>Portfolio ≻ Project Title</h1>
+  </section>
 
-          <!-- Overview card -->
-          <section class="text-card" id="overview">
-            <h2 class="card-heading">Overview</h2>
-            <div class="card-divider" aria-hidden="true"></div>
-            <p>This section contains a concise description of the project, the problem it solves, the technologies used, and a short summary of your role and impact. Keep it scannable — visitors should understand the value within a few lines.</p>
-          </section>
+  <main class="wid" id="project-page">
+    <div class="wid-inner">
+      <div class="wid-text" style="width:100%;">
+        <!-- Intro card immediately below hero -->
+        <section class="text-card" id="intro">
+          <h2 class="card-heading">Project Title</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p class="lead">One-sentence elevator pitch that quickly tells a visitor what this project does and why it's
+            interesting.</p>
+        </section>
 
-          <!-- Requirements / Scope card -->
-          <section class="text-card" id="requirements">
-            <h2 class="card-heading">Requirements / Scope</h2>
-            <div class="card-divider" aria-hidden="true"></div>
-            <ul>
-              <li>Requirement or scope item #1</li>
-              <li>Requirement or scope item #2</li>
-              <li>Requirement or scope item #3</li>
-            </ul>
-          </section>
+        <!-- Following cards stacked vertically -->
+        <section class="text-card" id="overview">
+          <h2 class="card-heading">Overview</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p>This section contains a concise description of the project, the problem it solves, the technologies used,
+            and a short summary of your role and impact. Keep it scannable — visitors should understand the value within
+            a few lines.</p>
+        </section>
 
-          <!-- Highlights card -->
-          <section class="text-card" id="highlights">
-            <h2 class="card-heading">Highlights</h2>
-            <div class="card-divider" aria-hidden="true"></div>
-            <ul>
-              <li>Key feature or accomplishment #1</li>
-              <li>Key feature or accomplishment #2</li>
-              <li>Notable metric or recognition</li>
-            </ul>
-          </section>
+        <section class="text-card" id="requirements">
+          <h2 class="card-heading">Requirements / Scope</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <ul>
+            <li>Requirement or scope item #1</li>
+            <li>Requirement or scope item #2</li>
+            <li>Requirement or scope item #3</li>
+          </ul>
+        </section>
 
-          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center;">
-            <a class="repo-button" href="#" target="_blank">Repository</a>
-            <a class="repo-button" href="#" target="_blank">Live Demo</a>
-            <span class="project-tag school" style="margin-left:auto;">School</span>
-          </div>
-
-          <p style="margin-top:12px;color:var(--muted);font-size:0.95rem;">To create a real page, copy this file and replace the cards' contents or populate dynamically.</p>
-
-          <p style="margin-top:18px;"><a href="../portfolio.html" style="color:var(--nav-accent);font-weight:700;">← Back to Portfolio</a></p>
-        </div>
+        <section class="text-card" id="highlights">
+          <h2 class="card-heading">Highlights</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <ul>
+            <li>Key feature or accomplishment #1</li>
+            <li>Key feature or accomplishment #2</li>
+            <li>Notable metric or recognition</li>
+          </ul>
+        </section>
       </div>
+      <!-- Table of contents (built dynamically) - placed inside wid-inner so it can sit to the right on wide screens -->
+      <aside id="project-toc" class="project-toc" aria-label="Project table of contents">
+        <section class="text-card" id="toc-card">
+          <h2 class="card-heading">Contents</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <nav>
+            <ul></ul>
+          </nav>
+        </section>
+      </aside>
+    </div>
+  </main>
+  </main>
 
-      <section class="project-gallery" style="max-width:1100px;margin:18px auto;padding:0 12px;">
-        <h3>Gallery / Screenshots</h3>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <img src="../../assets/projects/placeholder.png" alt="screenshot" style="width:240px;height:140px;object-fit:cover;border-radius:8px;">
-          <img src="../../assets/projects/placeholder.png" alt="screenshot" style="width:240px;height:140px;object-fit:cover;border-radius:8px;">
-          <img src="../../assets/projects/placeholder.png" alt="screenshot" style="width:240px;height:140px;object-fit:cover;border-radius:8px;">
-        </div>
-      </section>
+  <div data-include="../../partials/footer.html"></div>
+  <script src="../../js/includes.js"></script>
+  <script src="../../js/project-detail.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
 
-    </main>
-
-    <div data-include="../../partials/footer.html"></div>
-    <script src="../../js/includes.js"></script>
-    <script src="../../js/project-detail.js"></script>
-    <script src="../../js/script.js"></script>
-  </body>
 </html>

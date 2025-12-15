@@ -109,3 +109,21 @@ function initNav() {
 
 document.addEventListener('DOMContentLoaded', initNav);
 window.addEventListener('includes:loaded', initNav);
+// adjust header offset so fixed header doesn't cover hero/subpage-hero
+function adjustHeaderOffset() {
+  const header = document.querySelector('.banner');
+  const root = document.documentElement;
+  let h = 0;
+  if (header) {
+    const rect = header.getBoundingClientRect();
+    h = Math.ceil(rect.height);
+  }
+  // set a CSS variable so CSS can use it for spacing
+  root.style.setProperty('--header-offset', h + 'px');
+  // also set the html scroll-padding-top inline to match (overrides static CSS)
+  root.style.setProperty('scroll-padding-top', h + 'px');
+}
+
+document.addEventListener('DOMContentLoaded', adjustHeaderOffset);
+window.addEventListener('includes:loaded', adjustHeaderOffset);
+window.addEventListener('resize', adjustHeaderOffset);

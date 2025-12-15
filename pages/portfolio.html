@@ -4,29 +4,10 @@
         <title>Portfolio</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" id="stylesheet" href="../css/style1.css">
-        <link rel="icon" id="favicon" href="assets/favicon-dark.png">
+        <link rel="icon" id="favicon" href="../assets/favicon-dark.png">
     </head>
     <body>
-        <header class="banner">
-            <a href="../index.html" class="logo-link">
-                <div class="logo">
-                    <p>TS</p>
-                </div>
-            </a>
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="about-me.html">About Me</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li><label class="switch">
-                            <input type="checkbox" id="toggleSwitch">
-                            <span class="slider"></span>
-                        </label> </li>
-                </ul>
-            </nav>
-        </header>
+        <div data-include="../partials/header2.html"></div>
         <section class="subpage-hero">
             <h1>Portfolio</h1>
         </section>
@@ -120,17 +101,8 @@
                 </div>
             </div>
         </section>
-        <footer id="contact-footer">
-                <!-- srcs = https://www.linkedin.com/ | https://github.com/ -->
-                <a href="https://www.linkedin.com/in/smithtas" target="_blank"><img
-                    src="../assets/social/linkedin.png" class="social-icon"
-                    id="linkedin">
-                </a>
-                <a href="https://github.com/tsmith422" target="_blank"><img
-                    src="../assets/social/github.png" class="social-icon"
-                    id="github"></a>
-            <p>&copy; 2024 Taylor Smith</p>
-        </footer>
+        <div data-include="../partials/footer.html"></div>
+        <script src="../js/includes.js"></script>
         <script src="../js/script.js"></script>
     </body>
 </html>

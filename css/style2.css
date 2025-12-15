@@ -262,7 +262,7 @@ input:checked+.slider:before {
     background-color: #34495e;
     color: white;
     text-align: center;
-    padding: 40px 0 10px;
+    padding: 24px 12px;
 }
 
 /* Render only the tech-stack GitHub logo as solid black */
@@ -270,26 +270,53 @@ input:checked+.slider:before {
     filter: grayscale(1) brightness(0) !important;
 }
 
-#contact-footer a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6px 12px;
+    display: flex;
+    flex-direction: column; /* stack socials above copy */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
+
+.footer-socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    transition: transform 220ms cubic-bezier(.22,.9,.28,1), box-shadow 220ms, background 220ms;
+    background: white;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.social-link:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(52,73,94,0.12); border-radius: 999px; }
 
 .social-icon {
-    padding: 8px;
-    background-color: white;
-    color: #34495e;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    width: 28px;
+    height: 28px;
+    display: block;
 }
 
-.social-icon:hover {
-    transform: scale(1.1) rotate(10deg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
+.social-link:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+.social-link:hover .social-icon { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+
+.footer-copy { margin: 0; color: #e6eef7; font-size: 0.95rem; }
+
+/* Inline SVG handling and instagram color for light theme */
+.social-link svg { width: 28px; height: 28px; display: block; fill: currentColor; }
+#instagram { color: #ffffff; }
 
 #portfolio-section {
     display: flex;
@@ -397,6 +424,14 @@ input:checked+.slider:before {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media (max-width: 420px) {
+    .social-icon { width: 22px; height: 22px; }
+    .social-link { width: 48px; height: 48px; }
+    .footer-inner { flex-direction: column; align-items: center; gap: 10px; }
+    .footer-socials { order: 1; }
+    .footer-copy { order: 2; font-size: 0.9rem; }
 }
 
 .interests-section h1 {

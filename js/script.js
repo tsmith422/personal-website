@@ -3,8 +3,18 @@ window.onload = loadStyle;
 window.addEventListener('includes:loaded', loadStyle);
 
 function _getPrefix() {
-  // if the page is inside the pages/ folder we need "../" before css/ and assets/
-  return window.location.pathname.includes('/pages/') ? '../' : '';
+  // Compute relative prefix from current location to repository root where css/ and assets/ live.
+  // For pages under /pages/... we need N x "../" where N = number of path segments after 'pages'.
+  try {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    const pagesIndex = parts.indexOf('pages');
+    if (pagesIndex === -1) return '';
+    const depthAfterPages = parts.length - pagesIndex - 1; // includes filename
+    // number of ../ needed equals depthAfterPages
+    return '../'.repeat(depthAfterPages);
+  } catch (e) {
+    return window.location.pathname.includes('/pages/') ? '../' : '';
+  }
 }
 
 function loadStyle() {

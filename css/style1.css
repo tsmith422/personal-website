@@ -20,6 +20,11 @@
     /* increased contrast */
     --nav-text-strong: #f6f7f9;
     /* brighter link text */
+
+    /* Scrollbar colors (theme-aware) */
+    --scroll-track: rgba(255,255,255,0.02);
+    --scroll-thumb: rgba(255,255,255,0.06);
+    --scroll-thumb-hover: rgba(255,255,255,0.12);
 }
 
 /* Smooth scrolling for in-page navigation and touch devices */
@@ -28,6 +33,35 @@ html {
     /* account for fixed header when jumping to anchors */
     scroll-padding-top: 80px;
     -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar: WebKit/Blink and Firefox support */
+/* WebKit/Blink (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
 * {

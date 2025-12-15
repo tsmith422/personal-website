@@ -8,6 +8,38 @@ body {
     color: #333;
 }
 
+/* Scrollbar variables and styles for light theme */
+:root {
+    --scroll-track: rgba(0,0,0,0.04);
+    --scroll-thumb: rgba(0,0,0,0.12);
+    --scroll-thumb-hover: rgba(0,0,0,0.20);
+}
+
+/* WebKit/Blink */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
+}
+
+/* Firefox */
+html { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
+
 /* Smooth scrolling for in-page navigation and touch devices */
 html {
     scroll-behavior: smooth;

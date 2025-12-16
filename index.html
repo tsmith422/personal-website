@@ -1,85 +1,105 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Home</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" id="stylesheet" href="css/style1.css">
-        <link rel="icon" id="favicon" href="assets/favicon-dark.png">
-    </head>
-    <body>
-        <header class="banner">
-            <a href="index.html" class="logo-link">
-                <div class="logo">
-                    <p>TS</p>
-                </div>
-            </a>
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="pages/about-me.html">About Me</a></li>
-                    <li><a href="pages/portfolio.html">Portfolio</a></li>
-                    <li><a href="pages/qualifications.html">Qualifications</a></li>
-                    <li><a href="pages/service.html">Service</a></li>
-                    <li><label class="switch">
-                            <input type="checkbox" id="toggleSwitch">
-                            <span class="slider"></span>
-                        </label> </li>
-                </ul>
-            </nav>
-        </header>
-        <section class="hero">
-            <h1>Hello, I am<br>
-                Taylor Smith.</h1>
-            <img src="assets/me1.png" alt="Profile Picture" class="hero-pfp">
-        </section>
-        <section class="wid">
-            <img src="assets/bot-pi.png" alt="What I do Image"
-                class="wid-image">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" id="stylesheet" href="css/style1.css">
+    <link rel="icon" id="favicon" href="assets/favicon-dark.png">
+</head>
+
+<body>
+    <div data-include="partials/header.html"></div>
+    <section class="hero">
+        <h1>Hello, I am<br>
+            Taylor Smith.</h1>
+        <img src="assets/me/me1.png" alt="Profile Picture" class="hero-pfp">
+    </section>
+    <section class="wid">
+        <div class="wid-inner">
+            <img src="assets/projects/bot-pi.png" alt="What I do Image" class="wid-image">
             <div class="wid-text">
-                <h1>What do I do?</h1>
-                <p>I am Taylor Smith, a full-time college student at Texas A&M
-                    University majoring
-                    in Computer Science with a minor in Mathematics. This
-                    website is going to be used
-                    as a portfolio for projects I have worked on and
-                    accomplishments I have made.<br><br>
+                <div class="text-card">
+                    <h2 class="card-heading">What do I do?</h2>
+                    <div class="card-divider" aria-hidden="true"></div>
+                    <p>I am Taylor Smith, a full-time college student at Texas A&M University majoring in Computer
+                        Science with a minor in Mathematics. This website is a portfolio for projects and
+                        accomplishments.</p>
 
-                    Currently I am working on various projects for the A&M
-                    Engineering Academies organization that I am an officer and
-                    ambassador in alongside personal coding projects that I find
-                    interesting.<br><br>
-
-                    I am not very familiar with front end, as this
-                    website is my first time working with Html, CSS, etc.;
-                    however, the programing languages I primarily use are C++,
-                    Python, and Java. I was tasked with teaching myself
-                    JavaScript for my final project in my UT CS course in high
-                    school, but I’m more comfortable with the languages I
-                    listed.</p>
+                    <p>Currently I work on projects for the A&M Engineering Academies organization (I serve as an
+                        officer and ambassador) as well as personal coding projects. My main languages are C++, Python,
+                        and Java. I have also used JavaScript for web work.</p>
+                </div>
             </div>
-        </section>
-        <section id="tech-stack">
-            <h1>My Tech Stack</h1>
-            <ul>
-                <li>Python</li>
-                <li>C++</li>
-                <li>Java</li>
-                <li>JavaScript</li>
-                <li>HTML & CSS</li>
-            </ul>
-        </section>
-        <footer id="contact-footer">
-            <!-- srcs = https://www.linkedin.com/ | https://github.com/ -->
-            <a href="https://www.linkedin.com/in/smithtas" target="_blank"><img
-                    src="assets/linkedin.png" class="social-icon"
-                    id="linkedin">
-            </a>
-            <a href="https://github.com/tsmith422" target="_blank"><img
-                    src="assets/github.png" class="social-icon"
-                    id="github"></a>
-            <p>&copy; 2024 Taylor Smith</p>
-        </footer>
-        <script src="js/script.js"></script>
-    </body>
-</html>
+        </div>
+    </section>
+    <section id="tech-stack">
+        <div class="section-inner">
+            <h2 class="section-heading">Tech Stack</h2>
 
+            <div class="tech-grid" aria-hidden="false">
+                <div class="tech-item tech-python">
+                    <div class="tech-logo"><img src="assets/logos/python.png" alt="Python logo" class="tech-logo-img">
+                    </div>
+                    <div class="tech-label">Python</div>
+                </div>
+
+                <div class="tech-item tech-cpp">
+                    <div class="tech-logo"><img src="assets/logos/cpp.png" alt="C++ logo" class="tech-logo-img"></div>
+                    <div class="tech-label">C++</div>
+                </div>
+
+                <div class="tech-item tech-java">
+                    <div class="tech-logo"><img src="assets/logos/java.png" alt="Java logo" class="tech-logo-img"></div>
+                    <div class="tech-label">Java</div>
+                </div>
+
+                <div class="tech-item tech-web">
+                    <div class="tech-logo"><img src="assets/logos/html.png" alt="HTML/CSS logo" class="tech-logo-img">
+                    </div>
+                    <div class="tech-label">HTML / CSS</div>
+                </div>
+
+                <div class="tech-item tech-git">
+                    <div class="tech-logo"><img src="assets/social/github-icon.png" alt="GitHub logo"
+                            class="tech-logo-img"></div>
+                    <div class="tech-label">Git / GitHub</div>
+                </div>
+
+                <div class="tech-item tech-jira">
+                    <div class="tech-logo"><img src="assets/logos/jira.png" alt="Jira logo" class="tech-logo-img"></div>
+                    <div class="tech-label">Jira</div>
+                </div>
+
+                <div class="tech-item tech-linux">
+                    <div class="tech-logo"><img src="assets/logos/linux.png" alt="Linux logo" class="tech-logo-img">
+                    </div>
+                    <div class="tech-label">Linux</div>
+                </div>
+
+                <div class="tech-item tech-psql">
+                    <div class="tech-logo"><img src="assets/logos/postgre.png" alt="Postgres logo"
+                            class="tech-logo-img"></div>
+                    <div class="tech-label">Postgres</div>
+                </div>
+
+                <div class="tech-item tech-js">
+                    <div class="tech-logo"><img src="assets/logos/js.png" alt="JavaScript logo" class="tech-logo-img">
+                    </div>
+                    <div class="tech-label">JavaScript</div>
+                </div>
+
+                <div class="tech-item tech-rails">
+                    <div class="tech-logo"><img src="assets/logos/ruby.png" alt="Ruby logo" class="tech-logo-img"></div>
+                    <div class="tech-label">Ruby on Rails</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div data-include="partials/footer.html"></div>
+    <script src="js/includes.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

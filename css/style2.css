@@ -150,6 +150,31 @@ h5 {
     #project-page .project-toc .text-card { max-width: 900px; margin: 0 auto 18px; }
 }
 
+/* Back-to-top floating button (light theme) */
+.scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transition: opacity 200ms ease, transform 180ms cubic-bezier(.22,.9,.28,1);
+    z-index: 60;
+    cursor: pointer;
+}
+.scroll-top svg { display:block; fill: currentColor; }
+.scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); }
+.scroll-top:focus { outline: none; box-shadow: 0 0 0 6px rgba(41,128,185,0.12); }
+
 /* On larger screens, lay out content + TOC side-by-side with TOC on the right */
 @media (min-width: 1000px) {
     #project-page .wid-inner { display: flex; align-items: flex-start; gap: 28px; }

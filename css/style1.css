@@ -628,6 +628,31 @@ footer {
     #project-page .project-toc .text-card { max-width: 900px; margin: 12px auto 18px; }
 }
 
+/* Back-to-top floating button (dark theme) */
+.scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: linear-gradient(180deg,var(--nav-accent),var(--nav-accent-strong));
+    color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transition: opacity 200ms ease, transform 180ms cubic-bezier(.22,.9,.28,1);
+    z-index: 60;
+    cursor: pointer;
+}
+.scroll-top svg { display:block; fill: currentColor; }
+.scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); }
+.scroll-top:focus { outline: none; box-shadow: 0 0 0 6px rgba(29,78,216,0.12); }
+
 .tech-item {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
     border-radius: 12px;

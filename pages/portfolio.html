@@ -1,37 +1,47 @@
 ﻿<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Portfolio</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" id="stylesheet" href="../css/style1.css">
-        <link rel="icon" id="favicon" href="../assets/favicon-dark.png">
-    </head>
-    <body>
-        <div data-include="../partials/header-subpage.html"></div>
 
-        <section class="subpage-hero">
-            <h1>Portfolio</h1>
-        </section>
+<head>
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" id="stylesheet" href="../css/style1.css">
+    <link rel="icon" id="favicon" href="../assets/favicon-dark.png">
+</head>
 
-        <main id="portfolio-main">
-            <div class="portfolio-controls">
-                <div class="controls-inner">
-                    <div class="filters" role="tablist" aria-label="Project filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="school">School</button>
-                        <button class="filter-btn" data-filter="personal">Personal</button>
-                    </div>
+<body>
+    <div data-include="../partials/header-subpage.html"></div>
+
+    <section class="subpage-hero">
+        <h1>Portfolio</h1>
+    </section>
+
+    <main id="portfolio-main">
+        <div class="portfolio-controls">
+            <div class="controls-inner">
+                <div class="filters" role="tablist" aria-label="Project filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="school">School</button>
+                    <button class="filter-btn" data-filter="personal">Personal</button>
                 </div>
             </div>
+        </div>
 
-            <section class="portfolio-grid" id="portfolio-grid" aria-live="polite">
-                <!-- project cards will be injected here by js/portfolio.js -->
-            </section>
-        </main>
-        <div data-include="../partials/footer.html"></div>
-        <script src="../js/includes.js"></script>
-        <script src="../js/portfolio.js"></script>
-        <script src="../js/script.js"></script>
-    </body>
+        <section class="portfolio-grid" id="portfolio-grid" aria-live="polite">
+            <!-- project cards will be injected here by js/portfolio.js -->
+        </section>
+    </main>
+    <div data-include="../partials/footer.html"></div>
+    <button id="scroll-top" class="scroll-top" aria-label="Back to top" title="Back to top">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M12 4l-8 8h5v8h6v-8h5z" />
+        </svg>
+    </button>
+
+    <script src="../js/includes.js"></script>
+    <script src="../js/portfolio.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/scroll-top.js"></script>
+</body>
+
 </html>

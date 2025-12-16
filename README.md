@@ -3,7 +3,7 @@ CSCE-331 Project 1
 
 NetID: smith.taylor
 
-Link: [Personal Website](https://people.tamu.edu/~smith.taylor/)
+Link: [Personal Website](https://tsmith422.github.io/personal-website/)
 
 ## Project Requirements
 

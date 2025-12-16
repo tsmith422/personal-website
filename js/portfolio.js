@@ -13,7 +13,7 @@
             id: 'wordle-javafx',
             title: 'Wordle (JavaFX)',
             thumb: '../assets/projects/wordle1.png',
-            category: 'school',
+            category: 'academic',
             short: 'A Wordle-like game built in Java using JavaFX and SceneBuilder',
             url: '#'
         },

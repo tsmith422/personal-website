@@ -168,7 +168,7 @@ p {
     margin: 0;
     padding: 0 6px;
     display: flex;
-    gap: 14px;
+    gap: 8px; /* tightened spacing between header links */
     align-items: center;
     flex-wrap: wrap;
 }
@@ -182,31 +182,34 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
+    padding: 8px 12px; /* slightly narrower so links sit closer */
     color: var(--nav-text-strong);
     background: transparent;
-    border-radius: 999px;
+    border-radius: 8px; /* less pill-like, more rectangular */
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
-    /* ensure no underline */
-    border: 1px solid var(--nav-border);
-    transition: background 260ms cubic-bezier(.22, .9, .28, 1), transform 200ms ease, box-shadow 260ms, color 180ms;
+    /* remove visible border for a cleaner look */
+    border: none;
+    /* include transform so press animation animates smoothly */
+    transition: background 220ms cubic-bezier(.22, .9, .28, 1), color 180ms, transform 120ms ease;
+    box-shadow: none;
     -webkit-font-smoothing: antialiased;
 }
 
 /* hover: subtle glow + lift with clearer contrast */
 .nav-links a:hover {
     background: linear-gradient(180deg, var(--nav-ghost), rgba(255, 255, 255, 0.04));
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+    /* keep header stable on hover */
+    transform: none;
+    box-shadow: none; /* remove drop shadow */
     color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.16);
 }
 
 /* pressed state */
 .nav-links a:active {
-    transform: translateY(-1px);
+    /* press effect: move down slightly while pressed, then transition back */
+    transform: translateY(2px);
 }
 
 /* active / current page indicator - stronger accent */
@@ -214,8 +217,7 @@ p {
 .nav-links a.active {
     color: #ffffff;
     background: linear-gradient(90deg, rgba(29, 78, 216, 0.22), rgba(99, 102, 241, 0.08));
-    border-color: var(--nav-accent-glow);
-    box-shadow: 0 10px 30px rgba(29, 78, 216, 0.16);
+    box-shadow: none; /* remove drop shadow for active/current */
 }
 
 /* focus styles for keyboard users */
@@ -366,6 +368,8 @@ footer {
 
 .hero h1 {
     line-height: 1.05;
+    /* subtle dark text shadow for improved legibility */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 /* Subpage hero (smaller banner for inner pages) */
@@ -386,6 +390,8 @@ footer {
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-size: clamp(1.25rem, 3.0vw, 2.25rem);
+    /* gentle dark text shadow for subpage headings */
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
 }
 
 .hero-pfp {
@@ -1107,7 +1113,7 @@ footer {
     }
 
     .nav-links ul {
-        gap: 18px;
+        gap: 12px; /* slightly tighter on wide screens */
     }
 
     .hero {

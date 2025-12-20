@@ -569,11 +569,15 @@ footer {
 }
 
 @media (min-width:1100px) {
-    .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(28px, 4.5vw, 72px);
+        max-width: 1260px; /* allow extra breathing room so columns don't shrink */
+    }
     .project-card { flex-direction: column; }
     .project-thumb { width: 100%; height: 160px; }
 }
-
+        
 /* Project detail TOC */
 .project-toc {
     /* wrapper only — allow the inner .text-card to provide the visual card */
@@ -599,8 +603,12 @@ footer {
 .project-toc a { color: var(--muted); text-decoration: none; font-weight:700; padding:6px 8px; display:block; border-radius:6px; }
 .project-toc a.active, .project-toc a:hover { color: #ffffff; background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); }
 
-@media (max-width:1100px) {
-    .project-toc { display: block; }
+/* Only switch TOC spacing when the layout stacks (match the stacking breakpoint at 999px) */
+@media (max-width:999px) {
+    /* keep TOC as a column flex so `gap` controls spacing when stacked */
+    .project-toc { display: flex; flex-direction: column; gap: 18px; }
+    /* avoid double-spacing from bottom margins on the inner cards when stacked */
+    .project-toc .text-card { margin-bottom: 0; }
 }
 
 /* Make each .text-card visually distinct on project page */
@@ -625,12 +633,14 @@ footer {
     #project-page .wid-inner {
         display: flex;
         align-items: flex-start;
-        gap: 48px; /* increased space between content and aside */
+        gap: 80px; /* increased space between content and aside */
+        max-width: 1260px; /* allow extra breathing room so columns don't shrink */
     }
     /* main content grows */
     #project-page .wid-text { flex: 1 1 auto; }
     /* TOC sits to the right with fixed width (wider for breathing room) */
-    #project-page .project-toc { flex: 0 0 480px; width: 480px; margin: 0; }
+    /* make aside width responsive so it shrinks smoothly with viewport */
+    #project-page .project-toc { flex: 0 0 clamp(280px, 24vw, 480px); width: clamp(280px, 24vw, 480px); margin: 0; }
     #project-page .project-toc .text-card { max-width: 100%; margin: 0; }
 }
 

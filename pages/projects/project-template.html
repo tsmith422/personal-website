@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Project Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" id="stylesheet" href="../../css/style-dark.css">
+  <link rel="icon" id="favicon" href="../../assets/favicon-dark.png">
+</head>
+
+<body>
+  <div data-include="../../partials/header-project.html"></div>
+
+  <section class="subpage-hero">
+    <h1>Portfolio ≻ Project Title</h1>
+  </section>
+
+  <main class="project-info" id="project-page">
+    <div class="wid-inner">
+      <div class="wid-text" style="width:100%;">
+        <!-- Intro card immediately below hero -->
+        <section class="text-card" id="intro">
+          <h2 class="card-heading">Project Title</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p class="lead">One-sentence elevator pitch that quickly tells a visitor what this project does and why it's
+            interesting.</p>
+        </section>
+
+        <!-- Following cards stacked vertically -->
+        <section class="text-card" id="overview">
+          <h2 class="card-heading">Overview</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p>This section contains a concise description of the project, the problem it solves, the technologies used,
+            and a short summary of your role and impact. Keep it scannable — visitors should understand the value within
+            a few lines.</p>
+        </section>
+
+        <section class="text-card" id="requirements">
+          <h2 class="card-heading">Requirements / Scope</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <ul>
+            <li>Requirement or scope item #1</li>
+            <li>Requirement or scope item #2</li>
+            <li>Requirement or scope item #3</li>
+          </ul>
+        </section>
+
+        <section class="text-card" id="highlights">
+          <h2 class="card-heading">Highlights</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <ul>
+            <li>Key feature or accomplishment #1</li>
+            <li>Key feature or accomplishment #2</li>
+            <li>Notable metric or recognition</li>
+          </ul>
+        </section>
+      </div>
+      <!-- Table of contents (built dynamically) - placed inside wid-inner so it can sit to the right on wide screens -->
+      <aside id="project-toc" class="project-toc" aria-label="Project table of contents">
+        <section class="text-card" id="toc-card">
+          <h2 class="card-heading">Contents</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <nav>
+            <ul></ul>
+          </nav>
+        </section>
+        <section class="text-card" id="quick-info">
+          <h2 class="card-heading">Quick Info</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p><strong>Role:</strong> Lead Developer</p>
+          <p><strong>Status:</strong> In Progress</p>
+          <p><strong>Timeline:</strong> January 2024 - June 2024</p>
+          <p><strong>Repository:</strong> <a href="#" target="_blank">GitHub Link</a></p>
+          <p><strong>Demo:</strong> <a href="#" target="_blank">Live Demo</a></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div data-include="../../partials/footer.html"></div>
+  <script src="../../js/includes.js"></script>
+  <script src="../../js/project-detail.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
+
+</html>

@@ -3,8 +3,18 @@ window.onload = loadStyle;
 window.addEventListener('includes:loaded', loadStyle);
 
 function _getPrefix() {
-  // if the page is inside the pages/ folder we need "../" before css/ and assets/
-  return window.location.pathname.includes('/pages/') ? '../' : '';
+  // Compute relative prefix from current location to repository root where css/ and assets/ live.
+  // For pages under /pages/... we need N x "../" where N = number of path segments after 'pages'.
+  try {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    const pagesIndex = parts.indexOf('pages');
+    if (pagesIndex === -1) return '';
+    const depthAfterPages = parts.length - pagesIndex - 1; // includes filename
+    // number of ../ needed equals depthAfterPages
+    return '../'.repeat(depthAfterPages);
+  } catch (e) {
+    return window.location.pathname.includes('/pages/') ? '../' : '';
+  }
 }
 
 function loadStyle() {
@@ -26,7 +36,7 @@ function loadStyle() {
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-light.png');
     if (toggleSwitch) toggleSwitch.checked = true;
   } else {
-    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style1.css');
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style-dark.css');
     if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'social/linkedin.png');
     if (github) github.setAttribute('src', assetsPrefix + 'social/github.png');
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-dark.png');
@@ -49,18 +59,18 @@ function toggleStyle() {
 
   if (!toggleSwitch) return;
 
-    if (toggleSwitch.checked) {
+  if (toggleSwitch.checked) {
     if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style2.css');
     if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'social/linkedin-black.png');
     if (github) github.setAttribute('src', assetsPrefix + 'social/github-black.png');
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-light.png');
     localStorage.setItem('style', 'style2');
   } else {
-    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style1.css');
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style-dark.css');
     if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'social/linkedin.png');
     if (github) github.setAttribute('src', assetsPrefix + 'social/github.png');
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-dark.png');
-    localStorage.setItem('style', 'style1');
+    localStorage.setItem('style', 'style-dark');
   }
 }
 
@@ -109,3 +119,21 @@ function initNav() {
 
 document.addEventListener('DOMContentLoaded', initNav);
 window.addEventListener('includes:loaded', initNav);
+// adjust header offset so fixed header doesn't cover hero/subpage-hero
+function adjustHeaderOffset() {
+  const header = document.querySelector('.banner');
+  const root = document.documentElement;
+  let h = 0;
+  if (header) {
+    const rect = header.getBoundingClientRect();
+    h = Math.ceil(rect.height);
+  }
+  // set a CSS variable so CSS can use it for spacing
+  root.style.setProperty('--header-offset', h + 'px');
+  // also set the html scroll-padding-top inline to match (overrides static CSS)
+  root.style.setProperty('scroll-padding-top', h + 'px');
+}
+
+document.addEventListener('DOMContentLoaded', adjustHeaderOffset);
+window.addEventListener('includes:loaded', adjustHeaderOffset);
+window.addEventListener('resize', adjustHeaderOffset);

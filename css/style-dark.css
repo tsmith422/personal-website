@@ -3,6 +3,7 @@
 /* Responsive, mobile-first CSS for personal-website */
 :root {
     --bg: #181a1b;
+    --header-offset: 56px;
     --panel: #1D2022;
     --accent: #1d4ed8;
     --text: #c9c9c9;
@@ -25,13 +26,17 @@
     --scroll-track: rgba(255,255,255,0.02);
     --scroll-thumb: rgba(255,255,255,0.06);
     --scroll-thumb-hover: rgba(255,255,255,0.12);
+    /* nav reveal timing */
+    --nav-rect-dur: 750ms;
+    /* Symmetric easing so open and close match visually */
+    --nav-rect-ease: cubic-bezier(0.00, 0.00, 0.22, 1);
 }
 
 /* Smooth scrolling for in-page navigation and touch devices */
 html {
     scroll-behavior: smooth;
     /* account for fixed header when jumping to anchors */
-    scroll-padding-top: 80px;
+    scroll-padding-top: var(--header-offset, 80px);
     -webkit-overflow-scrolling: touch;
 }
 
@@ -167,7 +172,7 @@ p {
     margin: 0;
     padding: 0 6px;
     display: flex;
-    gap: 14px;
+    gap: 8px; /* tightened spacing between header links */
     align-items: center;
     flex-wrap: wrap;
 }
@@ -181,31 +186,34 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
+    padding: 8px 12px; /* slightly narrower so links sit closer */
     color: var(--nav-text-strong);
     background: transparent;
-    border-radius: 999px;
+    border-radius: 8px; /* less pill-like, more rectangular */
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
-    /* ensure no underline */
-    border: 1px solid var(--nav-border);
-    transition: background 260ms cubic-bezier(.22, .9, .28, 1), transform 200ms ease, box-shadow 260ms, color 180ms;
+    /* remove visible border for a cleaner look */
+    border: none;
+    /* include transform so press animation animates smoothly */
+    transition: background 220ms cubic-bezier(.22, .9, .28, 1), color 180ms, transform 120ms ease;
+    box-shadow: none;
     -webkit-font-smoothing: antialiased;
 }
 
 /* hover: subtle glow + lift with clearer contrast */
 .nav-links a:hover {
     background: linear-gradient(180deg, var(--nav-ghost), rgba(255, 255, 255, 0.04));
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+    /* keep header stable on hover */
+    transform: none;
+    box-shadow: none; /* remove drop shadow */
     color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.16);
 }
 
 /* pressed state */
 .nav-links a:active {
-    transform: translateY(-1px);
+    /* press effect: move down slightly while pressed, then transition back */
+    transform: translateY(2px);
 }
 
 /* active / current page indicator - stronger accent */
@@ -213,8 +221,7 @@ p {
 .nav-links a.active {
     color: #ffffff;
     background: linear-gradient(90deg, rgba(29, 78, 216, 0.22), rgba(99, 102, 241, 0.08));
-    border-color: var(--nav-accent-glow);
-    box-shadow: 0 10px 30px rgba(29, 78, 216, 0.16);
+    box-shadow: none; /* remove drop shadow for active/current */
 }
 
 /* focus styles for keyboard users */
@@ -359,12 +366,36 @@ footer {
     gap: 18px;
     padding: 100px 16px 40px;
     /* top padding leaves room for fixed header */
-    margin-top: 56px;
+    margin-top: var(--header-offset, 56px);
     text-align: center;
 }
 
 .hero h1 {
     line-height: 1.05;
+    /* subtle dark text shadow for improved legibility */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Subpage hero (smaller banner for inner pages) */
+.subpage-hero {
+    background-image: url('../assets/banners/Banner-medium.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px;
+    margin-top: var(--header-offset, 56px); /* leave space for fixed header */
+    text-align: center;
+    color: var(--text);
+}
+
+.subpage-hero h1 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.25rem, 3.0vw, 2.25rem);
+    /* gentle dark text shadow for subpage headings */
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
 }
 
 .hero-pfp {
@@ -383,6 +414,15 @@ footer {
     /* panel spans the full page width */
     padding: 28px 0;
     /* vertical padding for the full-width band */
+    box-sizing: border-box;
+    color: var(--text);
+}
+
+/* Project-specific container that mirrors .wid but uses the page's default background */
+.project-info {
+    width: 100%;
+    background-color: transparent;
+    padding: 28px 0;
     box-sizing: border-box;
     color: var(--text);
 }
@@ -475,6 +515,191 @@ footer {
     /* center rows including partial last row */
     margin-top: 18px;
 }
+
+/* Portfolio grid and cards */
+.portfolio-controls {
+    width: 100%;
+    background: transparent;
+    padding: 18px 12px;
+}
+.controls-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.filters { display: flex; gap: 8px; align-items: center; }
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.filter-btn.active { background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); color: #fff; border-color: rgba(255,255,255,0.12); }
+.controls-actions .add-project { color: var(--text); text-decoration: none; font-weight:700; }
+
+.portfolio-grid {
+    max-width: 1100px;
+    margin: 12px auto 60px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    padding: 0 12px;
+}
+
+.project-card {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 12px;
+    border-radius: 12px;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
+.project-thumb { flex: 0 0 160px; width: 160px; height: 110px; overflow: hidden; border-radius: 8px; }
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.project-meta { flex: 1 1 auto; display:flex; flex-direction:column; justify-content:space-between; }
+.project-meta h3 { margin: 0 0 6px 0; font-size: 1.125rem; }
+.project-meta p { margin: 0 0 8px 0; color: var(--muted); }
+.project-tag { align-self:flex-start; padding:6px 8px; border-radius:999px; font-weight:700; font-size:0.8rem; }
+.project-tag.academic { background: rgba(29,78,216,0.12); color: var(--nav-text-strong); }
+.project-tag.personal { background: rgba(99,102,241,0.10); color: var(--nav-text-strong); }
+
+@media (min-width:700px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width:1100px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(28px, 4.5vw, 72px);
+        max-width: 1260px; /* allow extra breathing room so columns don't shrink */
+    }
+    .project-card { flex-direction: column; }
+    .project-thumb { width: 100%; height: 160px; }
+}
+        
+/* Project detail TOC */
+.project-toc {
+    /* wrapper only — allow the inner .text-card to provide the visual card */
+    max-width: 1100px;
+    margin: 12px auto;
+    width: calc(100% - 32px);
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* more space between Contents and Quick Info */
+}
+
+/* For project pages: left-align the TOC wrapper and constrain the inner card width
+   so the TOC starts at the same vertical position as the other .text-card blocks */
+#project-page .project-toc { margin: 12px 0; width: auto; }
+#project-page .project-toc .text-card { max-width: 100%; margin: 0 0 18px 0; }
+.project-toc h4 { margin: 0 0 8px 0; font-size: 0.95rem; color: var(--text); }
+.project-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.project-toc a { color: var(--muted); text-decoration: none; font-weight:700; padding:6px 8px; display:block; border-radius:6px; }
+.project-toc a.active, .project-toc a:hover { color: #ffffff; background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); }
+
+/* Only switch TOC spacing when the layout stacks (match the stacking breakpoint at 999px) */
+@media (max-width:999px) {
+    /* keep TOC as a column flex so `gap` controls spacing when stacked */
+    .project-toc { display: flex; flex-direction: column; gap: 18px; }
+    /* avoid double-spacing from bottom margins on the inner cards when stacked */
+    .project-toc .text-card { margin-bottom: 0; }
+}
+
+/* Make each .text-card visually distinct on project page */
+#project-page .text-card { margin-bottom: 18px; background: var(--panel); }
+
+/* Default: stack blocks vertically for project page */
+#project-page .wid-inner { display: block; }
+#project-page .wid-text { display: block; }
+#project-page .wid-text .text-card { height: auto; }
+
+/* On narrow screens: make the container a column-flex so we can place the TOC above content */
+@media (max-width: 999px) {
+    #project-page .wid-inner { display: flex; flex-direction: column; }
+    /* put the TOC first visually */
+    #project-page .project-toc { order: -1; width: 100%; margin-bottom: 18px; }
+    /* match the default .text-card max-width so the TOC matches other cards */
+    #project-page .project-toc .text-card { max-width: 900px; margin: 0 auto 18px; }
+}
+
+/* On larger screens, lay out content + TOC side-by-side, TOC on the right */
+@media (min-width: 1000px) {
+    #project-page .wid-inner {
+        display: flex;
+        align-items: flex-start;
+        gap: 80px; /* increased space between content and aside */
+        max-width: 1260px; /* allow extra breathing room so columns don't shrink */
+    }
+    /* main content grows */
+    #project-page .wid-text { flex: 1 1 auto; }
+    /* TOC sits to the right with fixed width (wider for breathing room) */
+    /* make aside width responsive so it shrinks smoothly with viewport */
+    #project-page .project-toc { flex: 0 0 clamp(280px, 24vw, 480px); width: clamp(280px, 24vw, 480px); margin: 0; }
+    #project-page .project-toc .text-card { max-width: 100%; margin: 0; }
+}
+
+/* On small screens, allow the TOC card to be wider to avoid overlapping content */
+@media (max-width: 560px) {
+    #project-page .project-toc { width: 100%; }
+    #project-page .project-toc .text-card { max-width: 900px; margin: 12px auto 18px; }
+}
+
+/* quick-info: ensure action links inside the quick-info card size to content only */
+#project-page #quick-info a,
+.text-card #quick-info a {
+    display: inline-block;
+    width: auto;
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+/* quick-info color variants */
+#project-page #quick-info a.repo { background: rgba(255,255,255,0.04); color: var(--text); border: 1px solid rgba(255,255,255,0.06); }
+#project-page #quick-info a.demo { background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); color:#fff; border: none; }
+
+/* Back-to-top floating button (dark theme) */
+.scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: linear-gradient(180deg,var(--nav-accent),var(--nav-accent-strong));
+    color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transition: opacity 200ms ease, transform 180ms cubic-bezier(.22,.9,.28,1);
+    z-index: 60;
+    cursor: pointer;
+}
+.scroll-top svg { display:block; fill: currentColor; }
+.scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); }
+.scroll-top:focus { outline: none; box-shadow: 0 0 0 6px rgba(29,78,216,0.12); }
 
 .tech-item {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
@@ -842,20 +1067,19 @@ footer {
         top: 100%;
         background: var(--bg);
         overflow: hidden;
-        /* use scaleY for smooth, performant animation */
-        transform-origin: top;
-        transform: scaleY(0);
-        opacity: 0;
+        /* nav grows downward; a pseudo-element will provide the same-colored rectangle */
+        max-height: 0;
         padding: 0 12px;
-        /* collapsed padding */
-        transition: transform 420ms cubic-bezier(.22, .9, .28, 1), opacity 300ms ease, padding 300ms ease;
+        transition: max-height var(--nav-rect-dur) var(--nav-rect-ease), padding 360ms ease;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         z-index: 39;
         display: block;
-        will-change: transform, opacity;
+        will-change: max-height;
     }
 
     .nav-links ul {
+        position: relative;
+        z-index: 2; /* links sit under the masks but above other content */
         flex-direction: column;
         gap: 6px;
         align-items: stretch;
@@ -866,13 +1090,15 @@ footer {
         display: block;
         padding: 10px 12px;
         border-radius: 8px;
+        opacity: 1; /* keep fully rendered; visibility controlled by overlay */
+        transform: translateY(0);
+        transition: opacity 260ms ease, transform 320ms cubic-bezier(.22,.9,.28,1);
+        transition-delay: 0ms; /* will be overridden per-item */
     }
 
-    /* open state: scale to full height */
+    /* open state: expand the nav (rectangle appears) then reveal links with a staggered timing */
     .nav-links.open {
-        transform: scaleY(1);
-        opacity: 1;
-        padding: 8px 12px 12px;
+        max-height: 520px; /* enough space for the menu; tweak if needed */
     }
 
     .banner {
@@ -881,7 +1107,7 @@ footer {
 
     .hero {
         padding-top: 120px;
-        margin-top: 56px;
+        margin-top: var(--header-offset, 56px);
     }
 }
 
@@ -892,7 +1118,7 @@ footer {
     }
 
     .nav-links ul {
-        gap: 18px;
+        gap: 12px; /* slightly tighter on wide screens */
     }
 
     .hero {
@@ -900,7 +1126,7 @@ footer {
         justify-content: space-between;
         text-align: left;
         padding: 110px 40px;
-        margin-top: 72px;
+        margin-top: var(--header-offset, 56px);
     }
 
     .hero h1 {
@@ -913,6 +1139,15 @@ footer {
     }
 
     .wid {
+        flex-direction: row;
+        align-items: center;
+        gap: 40px;
+        padding: 50px 40px;
+        text-align: left;
+    }
+
+    /* project-info mirrors these wide-screen layout tweaks */
+    .project-info {
         flex-direction: row;
         align-items: center;
         gap: 40px;
@@ -969,6 +1204,10 @@ footer {
     }
 
     .wid {
+        padding: 60px 80px;
+    }
+
+    .project-info {
         padding: 60px 80px;
     }
 
@@ -1058,6 +1297,13 @@ footer {
 
 /* layout tweak: ensure card fits inside wid layout */
 .wid {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 28px 16px;
+}
+
+.project-info {
     display: flex;
     gap: 18px;
     align-items: flex-start;

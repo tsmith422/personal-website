@@ -26,6 +26,10 @@
     --scroll-track: rgba(255,255,255,0.02);
     --scroll-thumb: rgba(255,255,255,0.06);
     --scroll-thumb-hover: rgba(255,255,255,0.12);
+    /* nav reveal timing */
+    --nav-rect-dur: 750ms;
+    /* Symmetric easing so open and close match visually */
+    --nav-rect-ease: cubic-bezier(0.00, 0.00, 0.22, 1);
 }
 
 /* Smooth scrolling for in-page navigation and touch devices */
@@ -1063,20 +1067,19 @@ footer {
         top: 100%;
         background: var(--bg);
         overflow: hidden;
-        /* use scaleY for smooth, performant animation */
-        transform-origin: top;
-        transform: scaleY(0);
-        opacity: 0;
+        /* nav grows downward; a pseudo-element will provide the same-colored rectangle */
+        max-height: 0;
         padding: 0 12px;
-        /* collapsed padding */
-        transition: transform 420ms cubic-bezier(.22, .9, .28, 1), opacity 300ms ease, padding 300ms ease;
+        transition: max-height var(--nav-rect-dur) var(--nav-rect-ease), padding 360ms ease;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         z-index: 39;
         display: block;
-        will-change: transform, opacity;
+        will-change: max-height;
     }
 
     .nav-links ul {
+        position: relative;
+        z-index: 2; /* links sit under the masks but above other content */
         flex-direction: column;
         gap: 6px;
         align-items: stretch;
@@ -1087,13 +1090,15 @@ footer {
         display: block;
         padding: 10px 12px;
         border-radius: 8px;
+        opacity: 1; /* keep fully rendered; visibility controlled by overlay */
+        transform: translateY(0);
+        transition: opacity 260ms ease, transform 320ms cubic-bezier(.22,.9,.28,1);
+        transition-delay: 0ms; /* will be overridden per-item */
     }
 
-    /* open state: scale to full height */
+    /* open state: expand the nav (rectangle appears) then reveal links with a staggered timing */
     .nav-links.open {
-        transform: scaleY(1);
-        opacity: 1;
-        padding: 8px 12px 12px;
+        max-height: 520px; /* enough space for the menu; tweak if needed */
     }
 
     .banner {

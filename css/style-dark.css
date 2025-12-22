@@ -17,6 +17,8 @@
     --nav-accent-strong: #0f4bd8;
     --nav-accent-glow: rgba(29, 78, 216, 0.18);
     --nav-ghost: rgba(255, 255, 255, 0.03);
+    /* color used when a nav link is pressed */
+    --nav-pressed: #60a5fa;
     --nav-border: rgba(255, 255, 255, 0.12);
     /* increased contrast */
     --nav-text-strong: #f6f7f9;
@@ -104,6 +106,13 @@ h2 {
 p {
     margin: 0 0 1rem 0;
     color: var(--text);
+}
+
+a {
+    color: var(--nav-pressed);
+    text-decoration: none;
+    transition: color 180ms ease;
+    font-weight: 800;
 }
 
 /* Header / Nav */
@@ -399,7 +408,7 @@ footer {
 /* Qualifications page: alternate background for each main section
    Start with the first section (resume) using the panel background, then alternate. */
 #qualifications-main>section {
-    padding: 28px 0;
+    padding: 28px;
 }
 
 #qualifications-main>section:nth-of-type(odd) {
@@ -408,6 +417,39 @@ footer {
 
 #qualifications-main>section:nth-of-type(even) {
     background: transparent;
+}
+
+/* Resume embed & header centering for qualifications page */
+#qualifications-main .resume-section .resume-container {
+    text-align: center;
+    padding: 24px 12px;
+}
+
+#qualifications-main .resume-section .resume-container h1 {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#qualifications-main .resume-section .resume-embed {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 8px;
+}
+
+#qualifications-main .resume-section .resume-embed iframe {
+    width: 100%;
+    max-width: 1100px;
+    height: 800px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+}
+
+/* smaller screens: reduce iframe height */
+@media (max-width: 700px) {
+    #qualifications-main .resume-section .resume-embed iframe {
+        height: 520px;
+    }
 }
 
 .subpage-hero h1 {

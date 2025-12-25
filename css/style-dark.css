@@ -32,6 +32,13 @@
     --nav-rect-dur: 750ms;
     /* Symmetric easing so open and close match visually */
     --nav-rect-ease: cubic-bezier(0.00, 0.00, 0.22, 1);
+    /* skill card sizing and responsive gap */
+    --skill-card-min: 1000px;
+    --skill-card-max: 1200px;
+    /* preferred uses vw so cards scale on very wide screens; min enforced at smaller widths */
+    --skill-card-clamp: clamp(var(--skill-card-min), 28vw, var(--skill-card-max));
+    /* gap will shrink earlier (priority) while card width holds to min until narrower breakpoints */
+    --skills-gap-large: 36px;
 }
 
 /* Smooth scrolling for in-page navigation and touch devices */
@@ -100,6 +107,12 @@ h1 {
 h2 {
     font-family: 'Inter', sans-serif;
     font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+    margin: 0;
+}
+
+h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     margin: 0;
 }
 
@@ -1106,15 +1119,21 @@ footer {
 
 .skills-container {
     display: grid;
-    /* constrain overall width so cards are less wide */
-    max-width: 860px;
-    margin: 0 auto;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    /* span the full content width; use symmetric page padding so right column can sit at the page edge */
+    width: 100%;
+    padding: 0 32px;
+     /* use two equal flexible columns; columns shrink equally as viewport narrows
+         column gap is prioritized to reduce first, then columns/cards will shrink */
+     grid-template-columns: repeat(2, minmax(0, 1fr));
+     /* column gap prioritized to reduce as viewport shrinks, then card width will clamp down */
+     column-gap: clamp(16px, 2.5vw, var(--skills-gap-large));
+     /* allow container to grow so cards can reach max on wide screens, but keep sensible cap */
+     max-width: calc(2 * var(--skill-card-max) + var(--skills-gap-large) + 64px);
+     margin: 0 auto;
+    row-gap: 40px;
     align-items: stretch;
-    /* ensure rows match height so cards are equal height per row */
-    grid-auto-rows: 1fr;
-    padding: 8px 4px;
+    /* ensure each row's height is determined by its tallest card */
+    grid-auto-rows: auto;
 }
 
 .skill {
@@ -1128,20 +1147,22 @@ footer {
     flex-direction: column;
     gap: 12px;
     box-sizing: border-box;
-    /* stretch to fill the grid row (equal heights) */
-    height: 100%;
-    min-height: 220px;
+     /* let the row determine the height so items in the same row match each other
+         but different rows can have different heights (no forced min-height) */
+     /* fluid card width: up to the clamp value, otherwise fill available column
+         this makes both cards shrink equally once space is constrained */
+     width: min(var(--skill-card-clamp), 100%);
 }
 
-/* Header (h2) at top of each card with a divider below */
-.skill h2 {
+/* Header (h3) at top of each card with a divider below */
+.skill h3 {
     margin: 0;
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
 
-.skill h2::after {
+.skill h3::after {
     content: "";
     display: block;
     height: 4px;
@@ -1157,20 +1178,63 @@ footer {
     line-height: 1.5;
 }
 
-/* Make skills stack to a single column on narrow screens */
-@media (max-width: 700px) {
+/* Align left-column cards to the start and right-column cards to the end */
+.skills-container > .skill:nth-child(odd) {
+    justify-self: start;
+}
+
+.skills-container > .skill:nth-child(even) {
+    justify-self: end;
+}
+
+/* Reduce the column gap progressively on smaller viewports */
+
+
+@media (max-width: 1000px) {
+    /* single column on small screens */
+    .skills-container {
+        max-width: none;
+        grid-template-columns: 1fr;
+        column-gap: 12px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .skills-container > .skill:nth-child(odd),
+    .skills-container > .skill:nth-child(even) {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .technical-skills > h2 { margin-left: 0; }
+}
+
+/* Align the heading with the left column and give it extra left margin */
+.technical-skills > h2 {
+    margin-left: 32px;
+    margin-bottom: 14px;
+}
+
+/* Make skills stack to a single column on narrow screens and reset alignment */
+@media (max-width: 1000px) {
     .skills-container {
         max-width: none;
         grid-template-columns: 1fr;
         gap: 14px;
         padding: 0;
+        margin: 0 auto;
     }
 
     .skill {
         min-height: auto;
         padding: 18px;
     }
+
+    .technical-skills > h2 {
+        margin-left: 0;
+    }
 }
+
 
 .interests-section {
     padding: 18px;

@@ -1326,7 +1326,7 @@ footer {
 
 /* Stack on narrow screens like other responsive blocks */
 @media (max-width:1000px) {
-    .interests-section > h2 {
+    .interests-section>h2 {
         margin-left: 0;
     }
 
@@ -1674,6 +1674,59 @@ footer {
     .ta-service {
         padding: 20px 40px;
     }
+}
+
+/* Extracurricular: card-style text and responsive images stacked below text */
+.teaso-service,
+.nhs-service {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+    padding: 18px 0;
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+}
+
+.teaso-text,
+.nhs-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--panel);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    color: var(--text);
+}
+
+.teaso-image,
+.nhs-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    border: solid 1px rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+.extracurricular-section h3 {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.extracurricular-section h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
 }
 
 /* Extra large screens */

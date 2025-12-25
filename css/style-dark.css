@@ -1327,9 +1327,14 @@ footer {
 /* Stack on narrow screens like other responsive blocks */
 @media (max-width:1000px) {
 
-    .interests-section .interest-row,
-    #interest-game-dev {
+    .interests-section .interest-row {
         flex-direction: column;
+        gap: 14px;
+    }
+
+    /* For the game-dev block, show text above the image on narrow screens */
+    #interest-game-dev {
+        flex-direction: column-reverse;
         gap: 14px;
     }
 

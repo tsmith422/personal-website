@@ -1214,7 +1214,7 @@ footer {
 
 /* Align the heading with the left column and give it extra left margin */
 .technical-skills>h2 {
-    margin-left: 32px;
+    margin-left: 36px;
     margin-bottom: 14px;
 }
 
@@ -1326,16 +1326,23 @@ footer {
 
 /* Stack on narrow screens like other responsive blocks */
 @media (max-width:1000px) {
+    .interests-section > h2 {
+        margin-left: 0;
+    }
 
     .interests-section .interest-row {
         flex-direction: column;
         gap: 14px;
+        padding: 0;
+        margin: 0 auto 24px;
     }
 
     /* For the game-dev block, show text above the image on narrow screens */
     #interest-game-dev {
         flex-direction: column-reverse;
         gap: 14px;
+        padding: 0;
+        margin: 38px auto;
     }
 
     .interests-section .interest-image {

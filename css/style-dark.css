@@ -1237,8 +1237,102 @@ footer {
 
 
 .interests-section {
+    /* match technical-skills spacing */
     padding: 18px;
 }
+
+/* Make interests match the margins/padding of the technical skills section
+   and format text as cards with responsive images that fit the layout. */
+.interests-section .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.interests-section > h2 {
+    margin-left: 32px;
+    margin-bottom: 14px;
+}
+
+.interests-section .interest-row {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+}
+
+/* Text area: styled as a card similar to .text-card/.skill */
+.interests-section .interest-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--panel);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    color: var(--text);
+}
+
+.interests-section .interest-text h3 {
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.interests-section .interest-text h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+.interests-section .interest-text p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* Images sized responsively to fit beside the card on wide screens and
+   fill the width on small screens. Use object-fit so they crop cleanly. */
+.interests-section .interest-image {
+    flex: 0 0 clamp(220px, 36%, 420px);
+    width: clamp(220px, 36%, 420px);
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Specific game dev block: allow image first then text — keep natural order */
+#interest-game-dev {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* Stack on narrow screens like other responsive blocks */
+@media (max-width:700px) {
+    .interests-section .interest-row,
+    #interest-game-dev {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .interests-section .interest-image {
+        width: 100%;
+        flex: none;
+    }
+
+    .interests-section .interest-text {
+        padding: 14px;
+    }
+}
+
 
 .interest-row {
     display: flex;

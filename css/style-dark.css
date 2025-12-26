@@ -1713,6 +1713,41 @@ footer {
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 }
 
+/* Extracurricular grid: three-card single row, spaced like technical-skills */
+.extracurricular-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(16px, 2.5vw, var(--skills-gap-large));
+    max-width: calc(3 * var(--skill-card-max) + 2 * var(--skills-gap-large) + 64px);
+    margin: 0 auto 24px;
+    padding: 0 32px;
+    align-items: start;
+    box-sizing: border-box;
+}
+
+.extracurricular-grid>section {
+    width: min(var(--skill-card-clamp), 100%);
+    box-sizing: border-box;
+}
+
+/* position first/second/third like skills: left, center, right */
+.extracurricular-grid>section:nth-child(1) {
+    justify-self: start;
+}
+
+.extracurricular-grid>section:nth-child(2) {
+    justify-self: center;
+}
+
+.extracurricular-grid>section:nth-child(3) {
+    justify-self: end;
+}
+
+.extracurricular-section h2 {
+    margin-left: 32px;
+    margin-bottom: 14px;
+}
+
 .extracurricular-section h3 {
     font-size: 1rem;
     margin: 0 0 8px 0;
@@ -1728,6 +1763,46 @@ footer {
     border-radius: 3px;
     background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
 }
+
+@media (max-width: 1000px) {
+    .extracurricular-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .extracurricular-grid>section {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .extracurricular-section>h2 {
+        margin-left: 0;
+    }
+}
+
+/* Further tighten spacing for stacked extracurricular cards */
+@media (max-width: 1000px) {
+    .teaso-service,
+    .nhs-service {
+        margin: 0;
+        padding: 0;
+        gap: 8px;
+    }
+
+    .teaso-text,
+    .nhs-text {
+        padding: 12px;
+    }
+
+    /* remove any extra bottom spacing on individual sections */
+    .extracurricular-grid > section {
+        margin: 0;
+        padding-bottom: 0;
+    }
+}
+
 
 /* Extra large screens */
 @media (min-width: 1200px) {

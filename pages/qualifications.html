@@ -1,48 +1,39 @@
 ﻿<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Qualifications</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" id="stylesheet" href="../css/style-dark.css">
-        <link rel="icon" id="favicon" href="assets/favicon-dark.png">
-    </head>
-    <body>
-        <header class="banner">
-            <a href="../index.html" class="logo-link">
-                <div class="logo">
-                    <p>TS</p>
-                </div>
-            </a>
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="about-me.html">About Me</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li><label class="switch">
-                            <input type="checkbox" id="toggleSwitch">
-                            <span class="slider"></span>
-                        </label> </li>
-                </ul>
-            </nav>
-        </header>
-        <section class="subpage-hero">
-            <h1>Qualifications</h1>
-        </section>
+
+<head>
+    <title>Qualifications</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" id="stylesheet" href="../css/style-dark.css">
+    <link rel="icon" id="favicon" href="../assets/favicon-dark.png">
+</head>
+
+<body>
+    <div data-include="../partials/header-subpage.html"></div>
+
+    <section class="subpage-hero">
+        <h1>Qualifications</h1>
+    </section>
+
+    <main id="qualifications-main">
+
         <section class="resume-section">
             <div class="resume-container">
-                <h1>Resume</h1>
-                <a
-                    href="../docs/Resume.pdf"
-                    class="resume-button" target="_blank">See Here</a>
+                <h2>Resume</h2>
+                <div class="resume-embed">
+                    <iframe src="../docs/Resume.pdf" title="Resume PDF" loading="lazy" aria-label="Resume PDF"></iframe>
+                </div>
+                <p class="resume-fallback">If your browser cannot display PDFs inline, <a href="../docs/Resume.pdf"
+                        target="_blank" rel="noopener">open the resume in a new tab</a>.</p>
             </div>
         </section>
+
         <section class="technical-skills">
-            <h1>Technical Skills</h1>
+            <h2>Technical Skills</h2>
             <div class="skills-container">
                 <div class="skill">
-                    <h2>Programming Languages</h2>
+                    <h3>Programming Languages</h3>
                     <p>Proficient in Python, C, C++, and Java, with some
                         experience in web development using HTML, CSS, and
                         JavaScript. Developed various projects, including a
@@ -50,7 +41,7 @@
                         coding and problem-solving abilities.</p>
                 </div>
                 <div class="skill">
-                    <h2>Tools & Technologies</h2>
+                    <h3>Tools & Technologies</h3>
                     <p>Experienced with Unix/Linux environments, Git for version
                         control, and microcomputers like Raspberry Pi. Utilized
                         Google Spreadsheets API for automation and data handling
@@ -58,7 +49,7 @@
                         technologies.</p>
                 </div>
                 <div class="skill">
-                    <h2>Data Handling & AI</h2>
+                    <h3>Data Handling & AI</h3>
                     <p>Exposed to data processing and analysis using Python.
                         Participated in the 2023 TAMU Datathon, where I cleaned
                         and processed data, used recursive feature elimination,
@@ -67,11 +58,9 @@
                         datasets and machine learning models.</p>
                 </div>
                 <div class="skill">
-                    <h2>Project Management & Communication</h2>
+                    <h3>Project Management & Communication</h3>
                     <p>Led the development of an automated verification system
-                        for <a
-                            href="https://getinvolved.tamu.edu/org/teaso"
-                            target="_blank">TEASO</a>,
+                        for <a href="https://getinvolved.tamu.edu/org/teaso" target="_blank">TEASO</a>,
                         improving efficiency. Managed communications
                         and collaborated with the treasurer to streamline
                         processes. Provided guidance to new students, showcasing
@@ -79,11 +68,12 @@
                 </div>
             </div>
         </section>
+
         <section class="interests-section">
-            <h1>Interests</h1>
+            <h2>Interests</h2>
             <div class="interest-row">
                 <div class="interest-text">
-                    <h2>Software Development</h2>
+                    <h3>Software Development</h3>
                     <p>I am quite interested in software development because it
                         allows me to create innovative solutions to real-world
                         problems. I enjoy the process of designing, coding, and
@@ -92,14 +82,12 @@
                         applications that could help make my or anyone's job
                         even a bit easier is very rewarding.</p>
                 </div>
-                <img src="../assets/projects/data4.png" alt="Software Dev Image"
-                    class="interest-image">
+                <img src="../assets/projects/data4.png" alt="Software Dev Image" class="interest-image">
             </div>
             <div id="interest-game-dev">
-                <img src="../assets/projects/wordle-code.png" alt="Game Dev Image"
-                    id="game-dev-image">
+                <img src="../assets/projects/wordle-code.png" alt="Game Dev Image" id="game-dev-image">
                 <div class="interest-text">
-                    <h2>Game Development</h2>
+                    <h3>Game Development</h3>
                     <p>Game development fascinates me because it combines
                         creativity with technical skills. I love taking the
                         programming skills I learn in the classroom and finally
@@ -113,10 +101,10 @@
             </div>
             <div class="interest-row">
                 <div class="interest-text">
-                    <h2>Cybersecurity</h2>
-                    <p>Learning Cybersecurity from the <a
-                            href="https://cybr.club/"
-                            target="_blank">Cybersecurity Club</a> has
+                    <h3>Cybersecurity</h3>
+                    <p>Learning Cybersecurity from the <a href="https://cybr.club/" target="_blank">Cybersecurity
+                            Club</a>
+                        has
                         interested me because it involves protecting systems and
                         data from malicious attacks. In an increasingly digital
                         world, ensuring the security and privacy of information
@@ -129,21 +117,80 @@
                         interesting to me.</p>
                 </div>
                 <!-- src = https://cybr.club/ -->
-                <img src="../assets/logos/cybr.png" alt="Cybersecurity Image"
-                    class="interest-image">
+                <img src="../assets/logos/cybr.png" alt="Cybersecurity Image" class="interest-image">
             </div>
         </section>
-        <footer id="contact-footer">
-                <!-- srcs = https://www.linkedin.com/ | https://github.com/ -->
-                <a href="https://www.linkedin.com/in/smithtas" target="_blank"><img
-                    src="../assets/social/linkedin.png" class="social-icon"
-                    id="linkedin">
-                </a>
-                <a href="https://github.com/tsmith422" target="_blank"><img
-                    src="../assets/social/github.png" class="social-icon"
-                    id="github"></a>
-            <p>&copy; 2024 Taylor Smith</p>
-        </footer>
-        <script src="../js/script.js"></script>
-    </body>
+
+        <section class="extracurricular-section">
+            <h2>Extracurricular Activities</h2>
+
+            <div class="extracurricular-grid">
+                <section class="teaso-service">
+                    <div class="teaso-text">
+                        <h3>TEASO Officer/Ambassador</h3>
+                        <p>During my time in the Texas Engineering Academies Student
+                            Organization (TEASO), I've had the opportunity manage
+                            communications technologies and collaborated with the
+                            treasurer to streamline the membership processes.
+                        </p>
+                        <p>Additionally, I have served as an ambassador, providing
+                            guidance and support to incoming students, sharing my
+                            experiences, and promoting the benefits of the Texas A&M
+                            Engineering Academies.
+                        </p>
+                        <!-- <img src="../assets/logos/teaso-nb.png" alt="TEASO Image" class="teaso-image"> -->
+                    </div>
+                </section>
+
+                <section class="teaso-service">
+                    <div class="teaso-text">
+                        <h3>Second One</h3>
+                        <p>During my time in the Texas Engineering Academies Student
+                            Organization (TEASO), I've had the opportunity manage
+                            communications technologies and collaborated with the
+                            treasurer to streamline the membership processes.
+                        </p>
+                        <p>Additionally, I have served as an ambassador, providing
+                            guidance and support to incoming students, sharing my
+                            experiences, and promoting the benefits of the Texas A&M
+                            Engineering Academies.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="nhs-service">
+                    <div class="nhs-text">
+                        <h3>National Honors Society</h3>
+                        <p>During my high school years, I was an active member of the
+                            <a href="https://www.nationalhonorsociety.org/" target="_blank">National
+                                Honors Society</a> (NHS) for two years, dedicating over
+                            100 hours to volunteering for various organizations. This
+                            experience allowed me to give back to my community in
+                            meaningful ways and make a positive impact.
+                        </p>
+                        <p>One of the key aspects of my service was volunteering at a
+                            children's library. I assisted with organizing books,
+                            reading to children, and helping put together events for
+                            them to play in.
+                        </p>
+                        <p>Additionally, I volunteered at concession stands during
+                            school events, where I helped raise funds for various school
+                            programs and activities.
+                        </p>
+                        <p>I also dedicated time to volunteering at local food banks,
+                            where I assisted in sorting and distributing food to
+                            families in need.
+                        </p>
+                    </div>
+                    <!-- src = https://www.nationalhonorsociety.org/ -->
+                    <!-- <img src="../assets/other/nhs.png" alt="NHS Image" class="nhs-image"> -->
+                </section>
+            </div>
+        </section>
+    </main>
+    <div data-include="../partials/footer.html"></div>
+    <script src="../js/includes.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+
 </html>

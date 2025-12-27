@@ -17,19 +17,28 @@
     --nav-accent-strong: #0f4bd8;
     --nav-accent-glow: rgba(29, 78, 216, 0.18);
     --nav-ghost: rgba(255, 255, 255, 0.03);
+    /* color used when a nav link is pressed */
+    --nav-pressed: #60a5fa;
     --nav-border: rgba(255, 255, 255, 0.12);
     /* increased contrast */
     --nav-text-strong: #f6f7f9;
     /* brighter link text */
 
     /* Scrollbar colors (theme-aware) */
-    --scroll-track: rgba(255,255,255,0.02);
-    --scroll-thumb: rgba(255,255,255,0.06);
-    --scroll-thumb-hover: rgba(255,255,255,0.12);
+    --scroll-track: rgba(255, 255, 255, 0.02);
+    --scroll-thumb: rgba(255, 255, 255, 0.06);
+    --scroll-thumb-hover: rgba(255, 255, 255, 0.12);
     /* nav reveal timing */
     --nav-rect-dur: 750ms;
     /* Symmetric easing so open and close match visually */
     --nav-rect-ease: cubic-bezier(0.00, 0.00, 0.22, 1);
+    /* skill card sizing and responsive gap */
+    --skill-card-min: 1000px;
+    --skill-card-max: 1200px;
+    /* preferred uses vw so cards scale on very wide screens; min enforced at smaller widths */
+    --skill-card-clamp: clamp(var(--skill-card-min), 28vw, var(--skill-card-max));
+    /* gap will shrink earlier (priority) while card width holds to min until narrower breakpoints */
+    --skills-gap-large: 36px;
 }
 
 /* Smooth scrolling for in-page navigation and touch devices */
@@ -101,9 +110,22 @@ h2 {
     margin: 0;
 }
 
+h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin: 0;
+}
+
 p {
     margin: 0 0 1rem 0;
     color: var(--text);
+}
+
+a {
+    color: var(--nav-pressed);
+    text-decoration: none;
+    transition: color 180ms ease;
+    font-weight: 800;
 }
 
 /* Header / Nav */
@@ -172,7 +194,8 @@ p {
     margin: 0;
     padding: 0 6px;
     display: flex;
-    gap: 8px; /* tightened spacing between header links */
+    gap: 8px;
+    /* tightened spacing between header links */
     align-items: center;
     flex-wrap: wrap;
 }
@@ -186,10 +209,12 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px; /* slightly narrower so links sit closer */
+    padding: 8px 12px;
+    /* slightly narrower so links sit closer */
     color: var(--nav-text-strong);
     background: transparent;
-    border-radius: 8px; /* less pill-like, more rectangular */
+    border-radius: 8px;
+    /* less pill-like, more rectangular */
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
@@ -206,7 +231,8 @@ p {
     background: linear-gradient(180deg, var(--nav-ghost), rgba(255, 255, 255, 0.04));
     /* keep header stable on hover */
     transform: none;
-    box-shadow: none; /* remove drop shadow */
+    box-shadow: none;
+    /* remove drop shadow */
     color: #ffffff;
 }
 
@@ -221,7 +247,8 @@ p {
 .nav-links a.active {
     color: #ffffff;
     background: linear-gradient(90deg, rgba(29, 78, 216, 0.22), rgba(99, 102, 241, 0.08));
-    box-shadow: none; /* remove drop shadow for active/current */
+    box-shadow: none;
+    /* remove drop shadow for active/current */
 }
 
 /* focus styles for keyboard users */
@@ -385,9 +412,57 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 80px 16px;
-    margin-top: var(--header-offset, 56px); /* leave space for fixed header */
+    margin-top: var(--header-offset, 56px);
+    /* leave space for fixed header */
     text-align: center;
     color: var(--text);
+}
+
+/* Qualifications page: alternate background for each main section
+   Start with the first section (resume) using the panel background, then alternate. */
+#qualifications-main>section {
+    padding: 28px;
+}
+
+#qualifications-main>section:nth-of-type(odd) {
+    background: var(--panel);
+}
+
+#qualifications-main>section:nth-of-type(even) {
+    background: transparent;
+}
+
+/* Resume embed & header centering for qualifications page */
+#qualifications-main .resume-section .resume-container {
+    text-align: center;
+    padding: 24px 12px;
+}
+
+#qualifications-main .resume-section .resume-container h1 {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#qualifications-main .resume-section .resume-embed {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 8px;
+}
+
+#qualifications-main .resume-section .resume-embed iframe {
+    width: 100%;
+    max-width: 1100px;
+    height: 800px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* smaller screens: reduce iframe height */
+@media (max-width: 700px) {
+    #qualifications-main .resume-section .resume-embed iframe {
+        height: 520px;
+    }
 }
 
 .subpage-hero h1 {
@@ -522,6 +597,7 @@ footer {
     background: transparent;
     padding: 18px 12px;
 }
+
 .controls-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -530,18 +606,34 @@ footer {
     justify-content: space-between;
     gap: 12px;
 }
-.filters { display: flex; gap: 8px; align-items: center; }
+
+.filters {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 .filter-btn {
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     color: var(--text);
     padding: 8px 12px;
     border-radius: 999px;
     font-weight: 700;
     cursor: pointer;
 }
-.filter-btn.active { background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); color: #fff; border-color: rgba(255,255,255,0.12); }
-.controls-actions .add-project { color: var(--text); text-decoration: none; font-weight:700; }
+
+.filter-btn.active {
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.controls-actions .add-project {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+}
 
 .portfolio-grid {
     max-width: 1100px;
@@ -558,36 +650,92 @@ footer {
     align-items: stretch;
     text-decoration: none;
     color: inherit;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-    border: 1px solid rgba(255,255,255,0.04);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.00));
+    border: 1px solid rgba(255, 255, 255, 0.04);
     padding: 12px;
     border-radius: 12px;
     transition: transform 200ms ease, box-shadow 200ms ease;
 }
-.project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
-.project-thumb { flex: 0 0 160px; width: 160px; height: 110px; overflow: hidden; border-radius: 8px; }
-.project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.project-meta { flex: 1 1 auto; display:flex; flex-direction:column; justify-content:space-between; }
-.project-meta h3 { margin: 0 0 6px 0; font-size: 1.125rem; }
-.project-meta p { margin: 0 0 8px 0; color: var(--muted); }
-.project-tag { align-self:flex-start; padding:6px 8px; border-radius:999px; font-weight:700; font-size:0.8rem; }
-.project-tag.academic { background: rgba(29,78,216,0.12); color: var(--nav-text-strong); }
-.project-tag.personal { background: rgba(99,102,241,0.10); color: var(--nav-text-strong); }
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+.project-thumb {
+    flex: 0 0 160px;
+    width: 160px;
+    height: 110px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-meta {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-meta h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.125rem;
+}
+
+.project-meta p {
+    margin: 0 0 8px 0;
+    color: var(--muted);
+}
+
+.project-tag {
+    align-self: flex-start;
+    padding: 6px 8px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.project-tag.academic {
+    background: rgba(29, 78, 216, 0.12);
+    color: var(--nav-text-strong);
+}
+
+.project-tag.personal {
+    background: rgba(99, 102, 241, 0.10);
+    color: var(--nav-text-strong);
+}
 
 @media (min-width:700px) {
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (min-width:1100px) {
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: clamp(28px, 4.5vw, 72px);
-        max-width: 1260px; /* allow extra breathing room so columns don't shrink */
+        max-width: 1260px;
+        /* allow extra breathing room so columns don't shrink */
     }
-    .project-card { flex-direction: column; }
-    .project-thumb { width: 100%; height: 160px; }
+
+    .project-card {
+        flex-direction: column;
+    }
+
+    .project-thumb {
+        width: 100%;
+        height: 160px;
+    }
 }
-        
+
 /* Project detail TOC */
 .project-toc {
     /* wrapper only — allow the inner .text-card to provide the visual card */
@@ -601,41 +749,106 @@ footer {
     box-shadow: none;
     display: flex;
     flex-direction: column;
-    gap: 40px; /* more space between Contents and Quick Info */
+    gap: 40px;
+    /* more space between Contents and Quick Info */
 }
 
 /* For project pages: left-align the TOC wrapper and constrain the inner card width
    so the TOC starts at the same vertical position as the other .text-card blocks */
-#project-page .project-toc { margin: 12px 0; width: auto; }
-#project-page .project-toc .text-card { max-width: 100%; margin: 0 0 18px 0; }
-.project-toc h4 { margin: 0 0 8px 0; font-size: 0.95rem; color: var(--text); }
-.project-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.project-toc a { color: var(--muted); text-decoration: none; font-weight:700; padding:6px 8px; display:block; border-radius:6px; }
-.project-toc a.active, .project-toc a:hover { color: #ffffff; background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); }
+#project-page .project-toc {
+    margin: 12px 0;
+    width: auto;
+}
+
+#project-page .project-toc .text-card {
+    max-width: 100%;
+    margin: 0 0 18px 0;
+}
+
+.project-toc h4 {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.project-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.project-toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 6px 8px;
+    display: block;
+    border-radius: 6px;
+}
+
+.project-toc a.active,
+.project-toc a:hover {
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
 
 /* Only switch TOC spacing when the layout stacks (match the stacking breakpoint at 999px) */
 @media (max-width:999px) {
+
     /* keep TOC as a column flex so `gap` controls spacing when stacked */
-    .project-toc { display: flex; flex-direction: column; gap: 18px; }
+    .project-toc {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
     /* avoid double-spacing from bottom margins on the inner cards when stacked */
-    .project-toc .text-card { margin-bottom: 0; }
+    .project-toc .text-card {
+        margin-bottom: 0;
+    }
 }
 
 /* Make each .text-card visually distinct on project page */
-#project-page .text-card { margin-bottom: 18px; background: var(--panel); }
+#project-page .text-card {
+    margin-bottom: 18px;
+    background: var(--panel);
+}
 
 /* Default: stack blocks vertically for project page */
-#project-page .wid-inner { display: block; }
-#project-page .wid-text { display: block; }
-#project-page .wid-text .text-card { height: auto; }
+#project-page .wid-inner {
+    display: block;
+}
+
+#project-page .wid-text {
+    display: block;
+}
+
+#project-page .wid-text .text-card {
+    height: auto;
+}
 
 /* On narrow screens: make the container a column-flex so we can place the TOC above content */
 @media (max-width: 999px) {
-    #project-page .wid-inner { display: flex; flex-direction: column; }
+    #project-page .wid-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
     /* put the TOC first visually */
-    #project-page .project-toc { order: -1; width: 100%; margin-bottom: 18px; }
+    #project-page .project-toc {
+        order: -1;
+        width: 100%;
+        margin-bottom: 18px;
+    }
+
     /* match the default .text-card max-width so the TOC matches other cards */
-    #project-page .project-toc .text-card { max-width: 900px; margin: 0 auto 18px; }
+    #project-page .project-toc .text-card {
+        max-width: 900px;
+        margin: 0 auto 18px;
+    }
 }
 
 /* On larger screens, lay out content + TOC side-by-side, TOC on the right */
@@ -643,21 +856,41 @@ footer {
     #project-page .wid-inner {
         display: flex;
         align-items: flex-start;
-        gap: 80px; /* increased space between content and aside */
-        max-width: 1260px; /* allow extra breathing room so columns don't shrink */
+        gap: 80px;
+        /* increased space between content and aside */
+        max-width: 1260px;
+        /* allow extra breathing room so columns don't shrink */
     }
+
     /* main content grows */
-    #project-page .wid-text { flex: 1 1 auto; }
+    #project-page .wid-text {
+        flex: 1 1 auto;
+    }
+
     /* TOC sits to the right with fixed width (wider for breathing room) */
     /* make aside width responsive so it shrinks smoothly with viewport */
-    #project-page .project-toc { flex: 0 0 clamp(280px, 24vw, 480px); width: clamp(280px, 24vw, 480px); margin: 0; }
-    #project-page .project-toc .text-card { max-width: 100%; margin: 0; }
+    #project-page .project-toc {
+        flex: 0 0 clamp(280px, 24vw, 480px);
+        width: clamp(280px, 24vw, 480px);
+        margin: 0;
+    }
+
+    #project-page .project-toc .text-card {
+        max-width: 100%;
+        margin: 0;
+    }
 }
 
 /* On small screens, allow the TOC card to be wider to avoid overlapping content */
 @media (max-width: 560px) {
-    #project-page .project-toc { width: 100%; }
-    #project-page .project-toc .text-card { max-width: 900px; margin: 12px auto 18px; }
+    #project-page .project-toc {
+        width: 100%;
+    }
+
+    #project-page .project-toc .text-card {
+        max-width: 900px;
+        margin: 12px auto 18px;
+    }
 }
 
 /* quick-info: ensure action links inside the quick-info card size to content only */
@@ -673,8 +906,17 @@ footer {
 }
 
 /* quick-info color variants */
-#project-page #quick-info a.repo { background: rgba(255,255,255,0.04); color: var(--text); border: 1px solid rgba(255,255,255,0.06); }
-#project-page #quick-info a.demo { background: linear-gradient(90deg,var(--nav-accent),var(--nav-accent-strong)); color:#fff; border: none; }
+#project-page #quick-info a.repo {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#project-page #quick-info a.demo {
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+    color: #fff;
+    border: none;
+}
 
 /* Back-to-top floating button (dark theme) */
 .scroll-top {
@@ -684,22 +926,34 @@ footer {
     width: 48px;
     height: 48px;
     border-radius: 999px;
-    background: linear-gradient(180deg,var(--nav-accent),var(--nav-accent-strong));
+    background: linear-gradient(180deg, var(--nav-accent), var(--nav-accent-strong));
     color: #fff;
     border: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
     opacity: 0;
     transform: translateY(8px) scale(0.96);
-    transition: opacity 200ms ease, transform 180ms cubic-bezier(.22,.9,.28,1);
+    transition: opacity 200ms ease, transform 180ms cubic-bezier(.22, .9, .28, 1);
     z-index: 60;
     cursor: pointer;
 }
-.scroll-top svg { display:block; fill: currentColor; }
-.scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); }
-.scroll-top:focus { outline: none; box-shadow: 0 0 0 6px rgba(29,78,216,0.12); }
+
+.scroll-top svg {
+    display: block;
+    fill: currentColor;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-top:focus {
+    outline: none;
+    box-shadow: 0 0 0 6px rgba(29, 78, 216, 0.12);
+}
 
 .tech-item {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
@@ -813,22 +1067,6 @@ footer {
     }
 }
 
-/* Portfolio, resume, services - responsive containers */
-.portfolio-container,
-.resume-container,
-.teaso-service,
-.ta-service,
-.nhs-service,
-.technical-skills,
-.interests-section {
-    max-width: 1200px;
-    margin: 18px auto;
-    width: calc(100% - 32px);
-    padding: 18px;
-    background-color: var(--panel);
-    border-radius: 12px;
-}
-
 .portfolio-container {
     display: flex;
     flex-direction: column;
@@ -880,19 +1118,243 @@ footer {
 }
 
 .skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid;
+    /* span the full content width; use symmetric page padding so right column can sit at the page edge */
+    width: 100%;
+    padding: 0 32px;
+    /* use two equal flexible columns; columns shrink equally as viewport narrows
+         column gap is prioritized to reduce first, then columns/cards will shrink */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* column gap prioritized to reduce as viewport shrinks, then card width will clamp down */
+    column-gap: clamp(16px, 2.5vw, var(--skills-gap-large));
+    /* allow container to grow so cards can reach max on wide screens, but keep sensible cap */
+    max-width: calc(2 * var(--skill-card-max) + var(--skills-gap-large) + 64px);
+    margin: 0 auto;
+    row-gap: 40px;
+    align-items: stretch;
+    /* ensure each row's height is determined by its tallest card */
+    grid-auto-rows: auto;
 }
 
 .skill {
-    flex: 1 1 200px;
-    min-width: 140px;
+    background: var(--panel);
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    /* let the row determine the height so items in the same row match each other
+         but different rows can have different heights (no forced min-height) */
+    /* fluid card width: up to the clamp value, otherwise fill available column
+         this makes both cards shrink equally once space is constrained */
+    width: min(var(--skill-card-clamp), 100%);
 }
 
+/* Header (h3) at top of each card with a divider below */
+.skill h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.skill h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+.skill p {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+/* Align left-column cards to the start and right-column cards to the end */
+.skills-container>.skill:nth-child(odd) {
+    justify-self: start;
+}
+
+.skills-container>.skill:nth-child(even) {
+    justify-self: end;
+}
+
+/* Reduce the column gap progressively on smaller viewports */
+
+
+@media (max-width: 1000px) {
+
+    /* single column on small screens */
+    .skills-container {
+        max-width: none;
+        grid-template-columns: 1fr;
+        column-gap: 12px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .skills-container>.skill:nth-child(odd),
+    .skills-container>.skill:nth-child(even) {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .technical-skills>h2 {
+        margin-left: 0;
+    }
+}
+
+/* Align the heading with the left column and give it extra left margin */
+.technical-skills>h2 {
+    margin-left: 36px;
+    margin-bottom: 14px;
+}
+
+/* Make skills stack to a single column on narrow screens and reset alignment */
+@media (max-width: 1000px) {
+    .skills-container {
+        max-width: none;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .skill {
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .technical-skills>h2 {
+        margin-left: 0;
+    }
+}
+
+
 .interests-section {
+    /* match technical-skills spacing */
     padding: 18px;
 }
+
+/* Make interests match the margins/padding of the technical skills section
+   and format text as cards with responsive images that fit the layout. */
+.interests-section .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.interests-section>h2 {
+    margin-left: 32px;
+    margin-bottom: 14px;
+}
+
+.interests-section .interest-row {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+    padding: 0 36px;
+}
+
+/* Text area: styled as a card similar to .text-card/.skill */
+.interests-section .interest-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--panel);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    color: var(--text);
+}
+
+.interests-section .interest-text h3 {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.interests-section .interest-text h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+.interests-section .interest-text p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* Images sized responsively to fit beside the card on wide screens and
+   fill the width on small screens. Use object-fit so they crop cleanly. */
+.interests-section .interest-image {
+    flex: 0 0 clamp(220px, 36%, 420px);
+    width: clamp(220px, 36%, 420px);
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    border: solid 1px rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+/* Specific game dev block: allow image first then text — keep natural order */
+#interest-game-dev {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    padding: 0 36px;
+    margin: 38px auto;
+}
+
+/* Stack on narrow screens like other responsive blocks */
+@media (max-width:1000px) {
+    .interests-section>h2 {
+        margin-left: 0;
+    }
+
+    .interests-section .interest-row {
+        flex-direction: column;
+        gap: 14px;
+        padding: 0;
+        margin: 0 auto 24px;
+    }
+
+    /* For the game-dev block, show text above the image on narrow screens */
+    #interest-game-dev {
+        flex-direction: column-reverse;
+        gap: 14px;
+        padding: 0;
+        margin: 38px auto;
+    }
+
+    .interests-section .interest-image {
+        width: 100%;
+        flex: none;
+    }
+
+    .interests-section .interest-text {
+        padding: 14px;
+    }
+}
+
 
 .interest-row {
     display: flex;
@@ -907,6 +1369,8 @@ footer {
     width: 100%;
     height: auto;
     border-radius: 12px;
+    border: solid 1px rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 }
 
 /* Footer */
@@ -922,7 +1386,8 @@ footer {
     margin: 0 auto;
     padding: 6px 12px;
     display: flex;
-    flex-direction: column; /* stack socials above copy */
+    flex-direction: column;
+    /* stack socials above copy */
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -945,7 +1410,8 @@ footer {
     transition: transform 220ms cubic-bezier(.22, .9, .28, 1), box-shadow 220ms, background 220ms;
     background: transparent;
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.06); /* subtle border so icons pop */
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    /* subtle border so icons pop */
 }
 
 .social-link:focus-visible {
@@ -978,8 +1444,16 @@ footer {
 }
 
 /* Force inline SVGs to inherit color; set instagram to white */
-.social-link svg { width: 28px; height: 28px; display: block; fill: currentColor; }
-#instagram { color: #ffffff; }
+.social-link svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+    fill: currentColor;
+}
+
+#instagram {
+    color: #ffffff;
+}
 
 /* Render only the tech-stack GitHub logo as solid black */
 .tech-item.tech-git .tech-logo-img {
@@ -1079,7 +1553,8 @@ footer {
 
     .nav-links ul {
         position: relative;
-        z-index: 2; /* links sit under the masks but above other content */
+        z-index: 2;
+        /* links sit under the masks but above other content */
         flex-direction: column;
         gap: 6px;
         align-items: stretch;
@@ -1090,15 +1565,18 @@ footer {
         display: block;
         padding: 10px 12px;
         border-radius: 8px;
-        opacity: 1; /* keep fully rendered; visibility controlled by overlay */
+        opacity: 1;
+        /* keep fully rendered; visibility controlled by overlay */
         transform: translateY(0);
-        transition: opacity 260ms ease, transform 320ms cubic-bezier(.22,.9,.28,1);
-        transition-delay: 0ms; /* will be overridden per-item */
+        transition: opacity 260ms ease, transform 320ms cubic-bezier(.22, .9, .28, 1);
+        transition-delay: 0ms;
+        /* will be overridden per-item */
     }
 
     /* open state: expand the nav (rectangle appears) then reveal links with a staggered timing */
     .nav-links.open {
-        max-height: 520px; /* enough space for the menu; tweak if needed */
+        max-height: 520px;
+        /* enough space for the menu; tweak if needed */
     }
 
     .banner {
@@ -1118,7 +1596,8 @@ footer {
     }
 
     .nav-links ul {
-        gap: 12px; /* slightly tighter on wide screens */
+        gap: 12px;
+        /* slightly tighter on wide screens */
     }
 
     .hero {
@@ -1196,6 +1675,134 @@ footer {
         padding: 20px 40px;
     }
 }
+
+/* Extracurricular: card-style text and responsive images stacked below text */
+.teaso-service,
+.nhs-service {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+    padding: 18px 0;
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+}
+
+.teaso-text,
+.nhs-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--panel);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    color: var(--text);
+}
+
+.teaso-image,
+.nhs-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    border: solid 1px rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+/* Extracurricular grid: three-card single row, spaced like technical-skills */
+.extracurricular-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(16px, 2.5vw, var(--skills-gap-large));
+    max-width: calc(3 * var(--skill-card-max) + 2 * var(--skills-gap-large) + 64px);
+    margin: 0 auto 24px;
+    padding: 0 32px;
+    align-items: start;
+    box-sizing: border-box;
+}
+
+.extracurricular-grid>section {
+    width: min(var(--skill-card-clamp), 100%);
+    box-sizing: border-box;
+}
+
+/* position first/second/third like skills: left, center, right */
+.extracurricular-grid>section:nth-child(1) {
+    justify-self: start;
+}
+
+.extracurricular-grid>section:nth-child(2) {
+    justify-self: center;
+}
+
+.extracurricular-grid>section:nth-child(3) {
+    justify-self: end;
+}
+
+.extracurricular-section h2 {
+    margin-left: 32px;
+    margin-bottom: 14px;
+}
+
+.extracurricular-section h3 {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.extracurricular-section h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+@media (max-width: 1000px) {
+    .extracurricular-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .extracurricular-grid>section {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .extracurricular-section>h2 {
+        margin-left: 0;
+    }
+}
+
+/* Further tighten spacing for stacked extracurricular cards */
+@media (max-width: 1000px) {
+    .teaso-service,
+    .nhs-service {
+        margin: 0;
+        padding: 0;
+        gap: 8px;
+    }
+
+    .teaso-text,
+    .nhs-text {
+        padding: 12px;
+    }
+
+    /* remove any extra bottom spacing on individual sections */
+    .extracurricular-grid > section {
+        margin: 0;
+        padding-bottom: 0;
+    }
+}
+
 
 /* Extra large screens */
 @media (min-width: 1200px) {

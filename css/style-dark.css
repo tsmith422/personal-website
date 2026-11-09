@@ -1960,8 +1960,10 @@ footer {
 }
 
 .wid-image {
-    flex: 0 0 400px;
-    max-width: 40%;
+    flex: 0 0 460px;
+    max-width: 45%;
+    align-self: stretch;
+    height: auto;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);

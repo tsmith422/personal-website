@@ -411,6 +411,39 @@ footer {
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
+.typewriter-text {
+    display: inline-block;
+    position: relative;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.typewriter-char {
+    display: inline-block;
+    visibility: hidden;
+}
+
+.typewriter-char.visible {
+    visibility: visible;
+}
+
+.typewriter-cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    margin-left: 2px;
+    border-left: 0.08em solid currentColor;
+    vertical-align: -0.12em;
+    animation: cursor-blink 0.8s steps(1, end) infinite;
+}
+
+@keyframes cursor-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
 /* Subpage hero (smaller banner for inner pages) */
 .subpage-hero {
     background-image: url('../assets/banners/Banner-medium.png');

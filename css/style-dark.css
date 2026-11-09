@@ -89,12 +89,19 @@ body {
 
 body {
     margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
     font-family: 'DM Sans', sans-serif;
     background-color: var(--bg);
     color: var(--text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.45;
+}
+
+body > div[data-include*="footer"] {
+    margin-top: auto;
 }
 
 /* fluid type */
@@ -398,9 +405,43 @@ footer {
 }
 
 .hero h1 {
+    font-size: clamp(1.5rem, 5vw, 3.125rem);
     line-height: 1.05;
     /* subtle dark text shadow for improved legibility */
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.typewriter-text {
+    display: inline-block;
+    position: relative;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.typewriter-char {
+    display: inline-block;
+    visibility: hidden;
+}
+
+.typewriter-char.visible {
+    visibility: visible;
+}
+
+.typewriter-cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    margin-left: 2px;
+    border-left: 0.08em solid currentColor;
+    vertical-align: -0.12em;
+    animation: cursor-blink 0.8s steps(1, end) infinite;
+}
+
+@keyframes cursor-blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Subpage hero (smaller banner for inner pages) */
@@ -1602,7 +1643,8 @@ footer {
 
     .hero {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        gap: clamp(20vw, 8vw, 120px);
         text-align: left;
         padding: 110px 40px;
         margin-top: var(--header-offset, 56px);
@@ -1610,11 +1652,11 @@ footer {
 
     .hero h1 {
         max-width: 60%;
-        margin-left: 20px;
+        margin-left: 0;
     }
 
     .hero-pfp {
-        margin-right: 20px;
+        margin-right: 0;
     }
 
     .wid {
@@ -1918,8 +1960,10 @@ footer {
 }
 
 .wid-image {
-    flex: 0 0 400px;
-    max-width: 40%;
+    flex: 0 0 460px;
+    max-width: 45%;
+    align-self: stretch;
+    height: auto;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);

@@ -137,3 +137,74 @@ function adjustHeaderOffset() {
 document.addEventListener('DOMContentLoaded', adjustHeaderOffset);
 window.addEventListener('includes:loaded', adjustHeaderOffset);
 window.addEventListener('resize', adjustHeaderOffset);
+
+function initTypewriter() {
+  const text = document.querySelector('.typewriter-text');
+  if (!text || text.dataset.typewriterInitialized) return;
+
+  text.dataset.typewriterInitialized = 'true';
+  const characters = [];
+  const cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  const nodes = Array.from(text.childNodes);
+
+  nodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      Array.from(node.textContent).forEach(character => {
+        const span = document.createElement('span');
+        span.className = 'typewriter-char';
+        span.textContent = character === ' ' ? '\u00a0' : character;
+        node.parentNode.insertBefore(span, node);
+        characters.push(span);
+      });
+      node.remove();
+    }
+  });
+
+  if (!characters.length) return;
+  text.appendChild(cursor);
+
+  const moveCursor = index => {
+    const anchor = index < 0 ? characters[0] : characters[index];
+    const anchorRect = anchor.getBoundingClientRect();
+    const textRect = text.getBoundingClientRect();
+    const left = index < 0 ? anchorRect.left : anchorRect.right;
+
+    cursor.style.left = `${left - textRect.left}px`;
+    cursor.style.top = `${anchorRect.top - textRect.top}px`;
+  };
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    characters.forEach(character => character.classList.add('visible'));
+    moveCursor(characters.length - 1);
+    return;
+  }
+
+  const wait = delay => new Promise(resolve => window.setTimeout(resolve, delay));
+
+  (async function loopTypewriter() {
+    while (true) {
+      moveCursor(-1);
+      for (let index = 0; index < characters.length; index += 1) {
+        const character = characters[index];
+        character.classList.add('visible');
+        moveCursor(index);
+        await wait(90);
+      }
+
+      await wait(1400);
+
+      for (let index = characters.length - 1; index >= 0; index -= 1) {
+        characters[index].classList.remove('visible');
+        moveCursor(index - 1);
+        await wait(60);
+      }
+
+      await wait(500);
+    }
+  })();
+}
+
+document.addEventListener('DOMContentLoaded', initTypewriter);

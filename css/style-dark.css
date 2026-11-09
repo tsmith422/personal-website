@@ -405,6 +405,7 @@ footer {
 }
 
 .hero h1 {
+    font-size: clamp(1.5rem, 5vw, 3.125rem);
     line-height: 1.05;
     /* subtle dark text shadow for improved legibility */
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
@@ -1609,7 +1610,8 @@ footer {
 
     .hero {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        gap: clamp(20vw, 8vw, 120px);
         text-align: left;
         padding: 110px 40px;
         margin-top: var(--header-offset, 56px);
@@ -1617,11 +1619,11 @@ footer {
 
     .hero h1 {
         max-width: 60%;
-        margin-left: 20px;
+        margin-left: 0;
     }
 
     .hero-pfp {
-        margin-right: 20px;
+        margin-right: 0;
     }
 
     .wid {

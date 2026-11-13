@@ -462,7 +462,8 @@ footer {
 /* Qualifications page: alternate background for each main section
    Start with the first section (resume) using the panel background, then alternate. */
 #qualifications-main>section {
-    padding: 28px 200px;
+    /* Center wide-screen content while preserving a usable mobile gutter. */
+    padding: 28px clamp(16px, calc((100vw - 1100px) / 2), 200px);
 }
 
 #qualifications-main>section:nth-of-type(odd) {

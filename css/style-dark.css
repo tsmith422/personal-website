@@ -462,7 +462,7 @@ footer {
 /* Qualifications page: alternate background for each main section
    Start with the first section (resume) using the panel background, then alternate. */
 #qualifications-main>section {
-    padding: 28px;
+    padding: 28px 200px;
 }
 
 #qualifications-main>section:nth-of-type(odd) {

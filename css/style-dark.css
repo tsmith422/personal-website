@@ -29,7 +29,7 @@
     --scroll-thumb: rgba(255, 255, 255, 0.06);
     --scroll-thumb-hover: rgba(255, 255, 255, 0.12);
     /* nav reveal timing */
-    --nav-rect-dur: 750ms;
+    --nav-rect-dur: 420ms;
     /* Symmetric easing so open and close match visually */
     --nav-rect-ease: cubic-bezier(0.00, 0.00, 0.22, 1);
     /* skill card sizing and responsive gap */
@@ -1534,7 +1534,8 @@ footer {
     height: 2px;
     width: 100%;
     background: var(--text);
-    transition: transform .25s ease, opacity .2s ease;
+    transition: transform .32s cubic-bezier(.22, .9, .28, 1),
+        opacity .24s ease, top .32s cubic-bezier(.22, .9, .28, 1);
     left: 0;
 }
 
@@ -1555,7 +1556,7 @@ footer {
 
 /* when nav open, animate hamburger to X */
 .hamburger.open .hamburger-inner {
-    transform: rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
 }
 
 .hamburger.open .hamburger-inner::before {
@@ -1586,7 +1587,7 @@ footer {
         /* nav grows downward; a pseudo-element will provide the same-colored rectangle */
         max-height: 0;
         padding: 0 12px;
-        transition: max-height var(--nav-rect-dur) var(--nav-rect-ease), padding 360ms ease;
+        transition: max-height var(--nav-rect-dur) var(--nav-rect-ease), padding 320ms ease;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         z-index: 39;
         display: block;
@@ -1601,6 +1602,16 @@ footer {
         gap: 6px;
         align-items: stretch;
         padding: 8px 0;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 240ms ease,
+            transform 320ms cubic-bezier(.22, .9, .28, 1);
+    }
+
+    .nav-links.open ul {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 80ms;
     }
 
     .nav-links a {

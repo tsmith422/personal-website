@@ -164,6 +164,7 @@
     height: var(--h);
     vertical-align: middle;
     margin-left: 8px;
+    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -200,8 +201,8 @@
 .switch .slider::before {
     content: "";
     position: absolute;
-    left: 4px;
-    top: 4px;
+    left: 3px;
+    top: 2.25px;
     width: calc(var(--h) - 8px);
     height: calc(var(--h) - 8px);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.12));
@@ -211,6 +212,10 @@
     transition: transform 360ms cubic-bezier(.22, .9, .28, 1), background 360ms, box-shadow 260ms;
     transform: translateX(0);
     will-change: transform, background, box-shadow;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(calc(var(--w) - var(--h)));
 }
 
 /* icon (sun / moon) - larger, brighter with subtle glow */

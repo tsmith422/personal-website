@@ -1,0 +1,245 @@
+/* Extracurricular: card-style text and responsive images stacked below text */
+.teaso-service,
+.nhs-service {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+    padding: 18px 0;
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+}
+
+.teaso-text,
+.nhs-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--panel);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    color: var(--text);
+}
+
+.teaso-image,
+.nhs-image {
+    object-fit: cover;
+    display: block;
+}
+
+/* Extracurricular grid: fluid cards that wrap as the viewport narrows */
+.extracurricular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(14px, 2.5vw, var(--skills-gap-large));
+    max-width: calc(3 * var(--skill-card-max) + 2 * var(--skills-gap-large) + 64px);
+    margin: 0 auto 24px;
+    padding: 0 clamp(0px, 2vw, 32px);
+    align-items: start;
+    box-sizing: border-box;
+}
+
+.extracurricular-grid>section {
+    width: 100%;
+    box-sizing: border-box;
+    justify-self: stretch;
+}
+
+.extracurricular-section h2 {
+    margin-left: 32px;
+}
+
+.extracurricular-section h3 {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.extracurricular-section h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+@media (max-width: 1000px) {
+    .extracurricular-grid {
+        gap: clamp(14px, 2vw, 20px);
+        padding: 0;
+        margin: 0;
+    }
+
+    .extracurricular-grid>section {
+        width: 100%;
+    }
+
+    .extracurricular-section>h2 {
+        margin-left: 0;
+    }
+
+    .teaso-service,
+    .nhs-service {
+        margin: 0;
+        padding: 0;
+        gap: 8px;
+    }
+
+    .teaso-text,
+    .nhs-text {
+        padding: 12px;
+    }
+
+    /* remove any extra bottom spacing on individual sections */
+    .extracurricular-grid>section {
+        margin: 0;
+        padding-bottom: 0;
+    }
+}
+
+
+/* Extra large screens */
+@media (min-width: 1200px) {
+    .hero {
+        padding: 140px 80px;
+    }
+
+    .portfolio-container {
+        padding: 28px;
+    }
+}
+
+/* Small tweaks for very small screens */
+@media (max-width: 420px) {
+    .logo {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .nav-links ul {
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        padding-top: 90px;
+    }
+
+    .social-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .social-link {
+        width: 48px;
+        height: 48px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer-socials {
+        order: 1;
+    }
+
+    .footer-copy {
+        order: 2;
+        font-size: 0.9rem;
+    }
+}
+
+/* heading inside the card */
+.text-card .card-heading {
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.125rem, 2.4vw, 1.6rem);
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* thin accent divider under heading */
+.text-card .card-divider {
+    width: calc(100% - 8px);
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+    margin: 8px 0 12px 0;
+}
+
+/* paragraphs spacing */
+.text-card p {
+    margin: 0 0 12px 0;
+    color: var(--text);
+}
+
+/* layout tweak: ensure card fits inside wid layout */
+.wid {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    padding: 28px 16px;
+}
+
+.project-info {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    padding: 28px 16px;
+}
+
+.wid-image {
+    flex: 0 0 460px;
+    max-width: 45%;
+    align-self: stretch;
+    height: auto;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    border: solid 1px rgba(255, 255, 255, 0.04);
+}
+
+
+/* responsive: stack on small screens */
+@media (max-width:700px) {
+
+    /* Keep the full-width panel but stack the inner container's children */
+    .wid {
+        padding: 20px 12px;
+    }
+
+    /* if using the centered container, force it to stack vertically */
+    .wid-inner {
+        flex-direction: column;
+        padding: 0;
+        gap: 14px;
+        align-items: stretch;
+    }
+
+    /* make image full-width above the text */
+    .wid-image {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .wid-text {
+        width: 100%;
+    }
+
+    .text-card {
+        padding: 14px;
+    }
+
+    .text-card .card-divider {
+        width: calc(100% - 8px);
+        height: 3px;
+        margin: 8px 0 12px 0;
+    }
+}

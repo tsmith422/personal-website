@@ -1,0 +1,309 @@
+/* Footer */
+#contact-footer {
+    background-color: var(--panel);
+    text-align: center;
+    padding: 20px 12px;
+    margin: 0;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6px 12px;
+    display: flex;
+    flex-direction: column;
+    /* stack socials above copy */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    transition: transform 220ms cubic-bezier(.22, .9, .28, 1), box-shadow 220ms, background 220ms;
+    background: transparent;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    /* subtle border so icons pop */
+}
+
+.social-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    border-radius: 999px;
+}
+
+.social-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+    border-radius: 4px;
+    mix-blend-mode: normal;
+}
+
+.social-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.social-link:hover .social-icon {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.footer-copy {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Force inline SVGs to inherit color; set instagram to white */
+.social-link svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+    fill: currentColor;
+}
+
+#instagram {
+    color: #ffffff;
+}
+
+/* Render only the tech-stack GitHub logo as solid black */
+.tech-item.tech-git .tech-logo-img {
+    filter: grayscale(1) brightness(0) !important;
+}
+
+/* Hamburger button (hidden on wide screens) */
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 6px;
+    margin-left: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+.hamburger-box {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--text);
+    transition: transform .32s cubic-bezier(.22, .9, .28, 1),
+        opacity .24s ease, top .32s cubic-bezier(.22, .9, .28, 1);
+    left: 0;
+}
+
+.hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+    content: "";
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    content: "";
+    top: 8px;
+}
+
+/* when nav open, animate hamburger to X */
+.hamburger.open .hamburger-inner {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.open .hamburger-inner::before {
+    transform: rotate(90deg) translateX(0);
+    top: 0;
+    opacity: 0;
+}
+
+.hamburger.open .hamburger-inner::after {
+    transform: rotate(-90deg);
+    top: 0;
+}
+
+/* Mobile nav dropdown (hidden by default) */
+/* Mobile behaviour and smoother animated dropdown */
+@media (max-width: 700px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: var(--bg);
+        overflow: hidden;
+        /* nav grows downward; a pseudo-element will provide the same-colored rectangle */
+        max-height: 0;
+        padding: 0 12px;
+        transition: max-height var(--nav-rect-dur) var(--nav-rect-ease), padding 320ms ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        z-index: 39;
+        display: block;
+        will-change: max-height;
+    }
+
+    .nav-links ul {
+        position: relative;
+        z-index: 2;
+        /* links sit under the masks but above other content */
+        flex-direction: column;
+        gap: 6px;
+        align-items: stretch;
+        padding: 8px 0;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 240ms ease,
+            transform 320ms cubic-bezier(.22, .9, .28, 1);
+    }
+
+    .nav-links.open ul {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 80ms;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 8px;
+        opacity: 1;
+        /* keep fully rendered; visibility controlled by overlay */
+        transform: translateY(0);
+        transition: opacity 260ms ease, transform 320ms cubic-bezier(.22, .9, .28, 1);
+        transition-delay: 0ms;
+        /* will be overridden per-item */
+    }
+
+    /* open state: expand the nav (rectangle appears) then reveal links with a staggered timing */
+    .nav-links.open {
+        max-height: 520px;
+        /* enough space for the menu; tweak if needed */
+    }
+
+    .banner {
+        z-index: 40;
+    }
+
+    .hero {
+        padding-top: 120px;
+        margin-top: var(--header-offset, 56px);
+    }
+}
+
+/* Larger screens adjustments */
+@media (min-width: 700px) {
+    .banner {
+        padding: 12px 28px;
+    }
+
+    .nav-links ul {
+        gap: 12px;
+        /* slightly tighter on wide screens */
+    }
+
+    .hero {
+        flex-direction: row;
+        justify-content: center;
+        gap: clamp(20vw, 8vw, 120px);
+        text-align: left;
+        padding: 110px 40px;
+        margin-top: var(--header-offset, 56px);
+    }
+
+    .hero h1 {
+        max-width: 60%;
+        margin-left: 0;
+    }
+
+    .hero-pfp {
+        margin-right: 0;
+    }
+
+    .wid {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    /* project-info mirrors these wide-screen layout tweaks */
+    .project-info {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .wid-image {
+        max-width: 600px;
+        margin: 0;
+    }
+
+    .wid-text {
+        margin: 0;
+    }
+
+    .portfolio-container {
+        flex-direction: row;
+        gap: 24px;
+        padding: 20px;
+    }
+
+    .portfolio-image {
+        width: 425px;
+        height: 400px;
+    }
+
+    .portfolio-content {
+        width: calc(100% - 425px - 24px);
+    }
+
+    .interest-row {
+        flex-direction: row;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .interest-image {
+        width: 40%;
+        margin-right: 0;
+    }
+
+    .teaso-service,
+    .nhs-service,
+    .ta-service {
+        padding: 20px 40px;
+    }
+}
+

@@ -1,0 +1,231 @@
+/* Skills and interests */
+.technical-skills {
+    text-align: left;
+    padding: 18px;
+}
+
+.skills-container {
+    display: grid;
+    /* span the full content width; use symmetric page padding so right column can sit at the page edge */
+    width: 100%;
+    padding: 0 32px;
+    /* use two equal flexible columns; columns shrink equally as viewport narrows
+         column gap is prioritized to reduce first, then columns/cards will shrink */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* column gap prioritized to reduce as viewport shrinks, then card width will clamp down */
+    column-gap: clamp(16px, 2.5vw, var(--skills-gap-large));
+    /* allow container to grow so cards can reach max on wide screens, but keep sensible cap */
+    max-width: calc(2 * var(--skill-card-max) + var(--skills-gap-large) + 64px);
+    margin: 0 auto;
+    row-gap: 40px;
+    align-items: stretch;
+    /* ensure each row's height is determined by its tallest card */
+    grid-auto-rows: auto;
+}
+
+.skill {
+    background: var(--panel);
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    /* let the row determine the height so items in the same row match each other
+         but different rows can have different heights (no forced min-height) */
+    /* fluid card width: up to the clamp value, otherwise fill available column
+         this makes both cards shrink equally once space is constrained */
+    width: min(var(--skill-card-clamp), 100%);
+}
+
+/* Header (h3) at top of each card with a divider below */
+.skill h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.skill h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+.skill p {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+/* Align left-column cards to the start and right-column cards to the end */
+.skills-container>.skill:nth-child(odd) {
+    justify-self: start;
+}
+
+.skills-container>.skill:nth-child(even) {
+    justify-self: end;
+}
+
+/* Align the heading with the left column and give it extra left margin */
+.technical-skills>h2 {
+    margin-left: 36px;
+    margin-bottom: 14px;
+}
+
+@media (max-width: 1000px) {
+    .skills-container {
+        max-width: none;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .skills-container>.skill:nth-child(odd),
+    .skills-container>.skill:nth-child(even) {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .technical-skills>h2 {
+        margin-left: 0;
+    }
+
+    .skill {
+        min-height: auto;
+        padding: 18px;
+    }
+}
+
+
+.interests-section {
+    /* match technical-skills spacing */
+    padding: 18px;
+}
+
+/* Make interests match the margins/padding of the technical skills section
+   and format text as cards with responsive images that fit the layout. */
+.interests-section .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.interests-section>h2 {
+    margin-left: 32px;
+    margin-bottom: 14px;
+}
+
+.interests-section .interest-row {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+    padding: 0 36px;
+}
+
+/* Text area: styled as a card similar to .text-card/.skill */
+.interests-section .interest-text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--panel);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    color: var(--text);
+}
+
+.interests-section .interest-text h3 {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.interests-section .interest-text h3::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+}
+
+.interests-section .interest-text p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* Images sized responsively to fit beside the card on wide screens and
+   fill the width on small screens. Use object-fit so they crop cleanly. */
+.interests-section .interest-image {
+    flex: 0 0 clamp(220px, 36%, 420px);
+    width: clamp(220px, 36%, 420px);
+    object-fit: cover;
+    display: block;
+}
+
+/* Specific game dev block: allow image first then text — keep natural order */
+#interest-game-dev {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    padding: 0 36px;
+    margin: 38px auto;
+}
+
+/* Stack on narrow screens like other responsive blocks */
+@media (max-width:1000px) {
+    .interests-section>h2 {
+        margin-left: 0;
+    }
+
+    .interests-section .interest-row {
+        flex-direction: column;
+        gap: 14px;
+        padding: 0;
+        margin: 0 auto 24px;
+    }
+
+    /* For the game-dev block, show text above the image on narrow screens */
+    #interest-game-dev {
+        flex-direction: column-reverse;
+        gap: 14px;
+        padding: 0;
+        margin: 38px auto;
+    }
+
+    .interests-section .interest-image {
+        width: 100%;
+        flex: none;
+    }
+
+    .interests-section .interest-text {
+        padding: 14px;
+    }
+}
+
+.interest-image,
+.teaso-image,
+.nhs-image,
+#game-dev-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: solid 1px rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+

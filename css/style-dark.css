@@ -47,6 +47,8 @@ html {
     /* account for fixed header when jumping to anchors */
     scroll-padding-top: var(--header-offset, 80px);
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
 /* Custom scrollbar: WebKit/Blink and Firefox support */
@@ -70,12 +72,6 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--scroll-thumb-hover);
-}
-
-/* Firefox */
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
 * {
@@ -535,8 +531,6 @@ footer {
     width: 100%;
     background-color: var(--panel);
     /* panel spans the full page width */
-    padding: 28px 0;
-    /* vertical padding for the full-width band */
     box-sizing: border-box;
     color: var(--text);
 }
@@ -545,7 +539,6 @@ footer {
 .project-info {
     width: 100%;
     background-color: transparent;
-    padding: 28px 0;
     box-sizing: border-box;
     color: var(--text);
 }
@@ -596,12 +589,12 @@ footer {
 
 /* text-card stays full width inside the wid-text */
 .text-card {
-    background: transparent;
-    /* card uses the panel background already provided by .wid */
+    background: var(--panel);
     border-radius: 12px;
     padding: 18px;
     border: 1px solid rgba(255, 255, 255, 0.04);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    max-width: 900px;
     width: 100%;
     color: var(--text);
     line-height: 1.6;
@@ -1015,9 +1008,6 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.04);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
     transition: transform 240ms cubic-bezier(.22, .9, .28, 1), box-shadow 240ms;
-}
-
-.tech-item {
     flex: 0 0 140px;
 }
 
@@ -1235,16 +1225,17 @@ footer {
     justify-self: end;
 }
 
-/* Reduce the column gap progressively on smaller viewports */
-
+/* Align the heading with the left column and give it extra left margin */
+.technical-skills>h2 {
+    margin-left: 36px;
+    margin-bottom: 14px;
+}
 
 @media (max-width: 1000px) {
-
-    /* single column on small screens */
     .skills-container {
         max-width: none;
         grid-template-columns: 1fr;
-        column-gap: 12px;
+        gap: 14px;
         margin: 0 auto;
         padding: 0;
     }
@@ -1258,31 +1249,10 @@ footer {
     .technical-skills>h2 {
         margin-left: 0;
     }
-}
-
-/* Align the heading with the left column and give it extra left margin */
-.technical-skills>h2 {
-    margin-left: 36px;
-    margin-bottom: 14px;
-}
-
-/* Make skills stack to a single column on narrow screens and reset alignment */
-@media (max-width: 1000px) {
-    .skills-container {
-        max-width: none;
-        grid-template-columns: 1fr;
-        gap: 14px;
-        padding: 0;
-        margin: 0 auto;
-    }
 
     .skill {
         min-height: auto;
         padding: 18px;
-    }
-
-    .technical-skills>h2 {
-        margin-left: 0;
     }
 }
 
@@ -1355,12 +1325,8 @@ footer {
 .interests-section .interest-image {
     flex: 0 0 clamp(220px, 36%, 420px);
     width: clamp(220px, 36%, 420px);
-    height: auto;
-    border-radius: 12px;
     object-fit: cover;
     display: block;
-    border: solid 1px rgba(255, 255, 255, 0.04);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 }
 
 /* Specific game dev block: allow image first then text — keep natural order */
@@ -1401,13 +1367,6 @@ footer {
     .interests-section .interest-text {
         padding: 14px;
     }
-}
-
-
-.interest-row {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 }
 
 .interest-image,
@@ -1679,18 +1638,12 @@ footer {
 
     .wid {
         flex-direction: row;
-        align-items: center;
-        gap: 40px;
-        padding: 50px 40px;
         text-align: left;
     }
 
     /* project-info mirrors these wide-screen layout tweaks */
     .project-info {
         flex-direction: row;
-        align-items: center;
-        gap: 40px;
-        padding: 50px 40px;
         text-align: left;
     }
 
@@ -1764,13 +1717,8 @@ footer {
 
 .teaso-image,
 .nhs-image {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
     object-fit: cover;
     display: block;
-    border: solid 1px rgba(255, 255, 255, 0.04);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 }
 
 /* Extracurricular grid: fluid cards that wrap as the viewport narrows */
@@ -1825,10 +1773,6 @@ footer {
     .extracurricular-section>h2 {
         margin-left: 0;
     }
-}
-
-/* Further tighten spacing for stacked extracurricular cards */
-@media (max-width: 1000px) {
 
     .teaso-service,
     .nhs-service {
@@ -1854,14 +1798,6 @@ footer {
 @media (min-width: 1200px) {
     .hero {
         padding: 140px 80px;
-    }
-
-    .wid {
-        padding: 60px 80px;
-    }
-
-    .project-info {
-        padding: 60px 80px;
     }
 
     .portfolio-container {
@@ -1912,18 +1848,6 @@ footer {
     }
 }
 
-/* simple card for paragraph blocks inside sections (heading + underline + content) */
-.text-card {
-    background: var(--panel);
-    border-radius: 12px;
-    padding: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
-    max-width: 900px;
-    color: var(--text);
-    line-height: 1.6;
-}
-
 /* heading inside the card */
 .text-card .card-heading {
     margin: 0 0 8px 0;
@@ -1968,14 +1892,8 @@ footer {
     max-width: 45%;
     align-self: stretch;
     height: auto;
-    border-radius: 12px;
-    object-fit: cover;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
     border: solid 1px rgba(255, 255, 255, 0.04);
-}
-
-.wid-text {
-    flex: 1 1 auto;
 }
 
 

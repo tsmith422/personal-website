@@ -43,7 +43,16 @@ function loadStyle() {
     if (toggleSwitch) toggleSwitch.checked = false;
   }
 
+  refreshHeaderOffsetAfterThemeLoad(stylesheet);
+
   if (toggleSwitch) toggleSwitch.addEventListener('change', toggleStyle);
+}
+
+function refreshHeaderOffsetAfterThemeLoad(stylesheet) {
+  if (!stylesheet) return;
+
+  stylesheet.addEventListener('load', adjustHeaderOffset, { once: true });
+  window.requestAnimationFrame(adjustHeaderOffset);
 }
 
 function toggleStyle() {
@@ -72,6 +81,8 @@ function toggleStyle() {
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-dark.png');
     localStorage.setItem('style', 'style-dark');
   }
+
+  refreshHeaderOffsetAfterThemeLoad(stylesheet);
 }
 
 function initNav() {

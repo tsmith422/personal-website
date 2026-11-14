@@ -1,0 +1,399 @@
+/* Header / Nav */
+.banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg);
+    padding: 10px 16px;
+    color: var(--text);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 40;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--text);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 0;
+    padding: 0;
+    /* ensure no internal spacing */
+    line-height: 1;
+    /* avoid baseline offset */
+}
+
+.logo p {
+    margin: 0;
+    /* remove default p margins */
+    line-height: 1;
+    /* keep text vertically centered */
+    display: block;
+}
+
+/* Remove underline from logo link and ensure no text decoration */
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+/* Nav links container */
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* list layout */
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 6px;
+    display: flex;
+    gap: 8px;
+    /* tightened spacing between header links */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* pill style links (desktop) */
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    /* slightly narrower so links sit closer */
+    color: var(--nav-text-strong);
+    background: transparent;
+    border-radius: 8px;
+    /* less pill-like, more rectangular */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    /* remove visible border for a cleaner look */
+    border: none;
+    /* include transform so press animation animates smoothly */
+    transition: background 220ms cubic-bezier(.22, .9, .28, 1), color 180ms, transform 120ms ease;
+    box-shadow: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* hover: subtle glow + lift with clearer contrast */
+.nav-links a:hover {
+    background: linear-gradient(180deg, var(--nav-ghost), rgba(255, 255, 255, 0.04));
+    /* keep header stable on hover */
+    transform: none;
+    box-shadow: none;
+    /* remove drop shadow */
+    color: #ffffff;
+}
+
+/* pressed state */
+.nav-links a:active {
+    /* press effect: move down slightly while pressed, then transition back */
+    transform: translateY(2px);
+}
+
+/* active / current page indicator - stronger accent */
+.nav-links a[aria-current="page"],
+.nav-links a.active {
+    color: #ffffff;
+    background: linear-gradient(90deg, rgba(29, 78, 216, 0.22), rgba(99, 102, 241, 0.08));
+    box-shadow: none;
+    /* remove drop shadow for active/current */
+}
+
+/* focus styles for keyboard users */
+.switch input:focus+.slider {
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.45),
+        0 0 0 5px rgba(99, 102, 241, 0.10);
+}
+
+/* keyboard accessibility */
+.nav-links a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(29, 78, 216, 0.14);
+    border-radius: 12px;
+}
+
+/* small icon support (if you add icons inside links) */
+.nav-links a .nav-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* ensure the switch doesn't look like a nav button */
+.nav-links li .switch {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.nav-links li .switch .slider {
+    border-radius: 999px;
+}
+
+/* Switch */
+/* Improved, higher-contrast theme toggle switch */
+.switch {
+    --w: 56px;
+    --h: 30px;
+    display: inline-block;
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    vertical-align: middle;
+    margin-left: 8px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* hide the native checkbox but keep it accessible */
+.switch input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* track - stronger border + shadow so it stands out on dark bg */
+.switch .slider {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.10));
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    /* visible edge */
+    transition: background 360ms cubic-bezier(.22, .9, .28, 1), box-shadow 260ms;
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.55),
+        /* deeper drop shadow */
+        inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
+}
+
+/* knob - bigger shadow and slight highlight for depth */
+.switch .slider::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 2.25px;
+    width: calc(var(--h) - 8px);
+    height: calc(var(--h) - 8px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.12));
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+    transition: transform 360ms cubic-bezier(.22, .9, .28, 1), background 360ms, box-shadow 260ms;
+    transform: translateX(0);
+    will-change: transform, background, box-shadow;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(calc(var(--w) - var(--h)));
+}
+
+/* icon (sun / moon) - larger, brighter with subtle glow */
+.switch .slider::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+    transition: transform 360ms cubic-bezier(.22, .9, .28, 1), filter 220ms;
+    /* filled white crescent (solid) */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ffffff' d='M21.752 15.002A9 9 0 1 1 12 3a7 7 0 0 0 9.752 12.002z'/></svg>");
+}
+
+/* checked = light mode -> filled sun (solid, warm color) */
+.switch input:checked+.slider::after {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23f59e0b' d='M6.76 4.84 5 3.07 3.07 5 4.84 6.76 6.76 4.84zM1 11h3v2H1v-2zm10-9h2v3h-2V2zm7.24 2.84 1.79-1.79L20.07 3l-1.79 1.79 1.79 1.79zM20 11v2h3v-2h-3zM12 6a6 6 0 100 12 6 6 0 000-12z'/></svg>");
+}
+
+/* slightly reduce icon opacity in dark (unchecked) for contrast but keep visible */
+.switch input:not(:checked)+.slider::after {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* Layout spacing to account for fixed header */
+main,
+.hero,
+.subpage-hero,
+.wid,
+#tech-stack,
+section,
+footer {
+    width: 100%;
+}
+
+/* Hero */
+.hero {
+    background-image: url('../assets/banners/Banner-large.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 100px 16px 40px;
+    /* top padding leaves room for fixed header */
+    margin-top: var(--header-offset, 56px);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(1.5rem, 5vw, 3.125rem);
+    line-height: 1.05;
+    /* subtle dark text shadow for improved legibility */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.typewriter-text {
+    display: inline-block;
+    position: relative;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.typewriter-char {
+    display: inline-block;
+    visibility: hidden;
+}
+
+.typewriter-char.visible {
+    visibility: visible;
+}
+
+.typewriter-cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    margin-left: 2px;
+    border-left: 0.08em solid currentColor;
+    vertical-align: -0.12em;
+    animation: cursor-blink 0.8s steps(1, end) infinite;
+}
+
+@keyframes cursor-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Subpage hero (smaller banner for inner pages) */
+.subpage-hero {
+    background-image: url('../assets/banners/Banner-medium.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px;
+    margin-top: var(--header-offset, 56px);
+    /* leave space for fixed header */
+    text-align: center;
+    color: var(--text);
+}
+
+/* Qualifications page: alternate background for each main section
+   Start with the first section (resume) using the panel background, then alternate. */
+#qualifications-main>section {
+    /* Center wide-screen content while preserving a usable mobile gutter. */
+    padding: 28px clamp(16px, calc((100vw - 1100px) / 2), 200px);
+}
+
+#qualifications-main>section:nth-of-type(odd) {
+    background: var(--panel);
+}
+
+#qualifications-main>section:nth-of-type(even) {
+    background: transparent;
+}
+
+@media (min-width: 1300px) {
+    #qualifications-main > .extracurricular-section {
+        padding-inline: 120px;
+    }
+}
+
+/* Resume embed & header centering for qualifications page */
+#qualifications-main .resume-section .resume-container {
+    text-align: center;
+    padding: 24px 12px;
+}
+
+#qualifications-main .resume-section .resume-container h1 {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#qualifications-main .resume-section .resume-embed {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 8px;
+}
+
+#qualifications-main .resume-section .resume-embed iframe {
+    width: 100%;
+    max-width: 1100px;
+    height: 800px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* smaller screens: reduce iframe height */
+@media (max-width: 700px) {
+    #qualifications-main .resume-section .resume-embed iframe {
+        height: 520px;
+    }
+}
+
+.subpage-hero h1 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.25rem, 3.0vw, 2.25rem);
+    /* gentle dark text shadow for subpage headings */
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.hero-pfp {
+    width: clamp(96px, 20vw, 200px);
+    height: auto;
+    border: 2px solid var(--text);
+    border-radius: 50%;
+    object-fit: cover;
+}
+

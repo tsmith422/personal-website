@@ -474,6 +474,12 @@ footer {
     background: transparent;
 }
 
+@media (min-width: 1300px) {
+    #qualifications-main > .extracurricular-section {
+        padding-inline: 120px;
+    }
+}
+
 /* Resume embed & header centering for qualifications page */
 #qualifications-main .resume-section .resume-container {
     text-align: center;
@@ -1787,7 +1793,6 @@ footer {
 
 .extracurricular-section h2 {
     margin-left: 32px;
-    margin-bottom: 14px;
 }
 
 .extracurricular-section h3 {

@@ -31,6 +31,20 @@ html {
     color-scheme: light;
 }
 
+#instagram {
+    color: #000000;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--nav-text-strong);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+.hero-pfp {
+    border-color: #c9c9c9;
+}
+
 .hero h1,
 .subpage-hero h1 {
     color: #ffffff;
@@ -115,6 +129,13 @@ html {
 }
 
 .filter-btn.active {
+    border-color: rgba(29, 78, 216, 0.4);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+}
+
+.filter-btn.active:hover {
+    background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
+    color: #ffffff;
     border-color: rgba(29, 78, 216, 0.4);
     box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
 }

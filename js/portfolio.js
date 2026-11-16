@@ -2,6 +2,30 @@
 (function () {
     const projects = [
         {
+            id: 'ray-tracer',
+            title: 'Ray Tracer',
+            thumb: '../assets/projects/ray-tracer/rays.png',
+            category: 'academic',
+            short: 'A ray tracer built in C++ with OpenGL.',
+            url: '#'
+        },
+        {
+            id: 'free-look-world',
+            title: 'Free-Look World',
+            thumb: '../assets/projects/free-look-world/example.png',
+            category: 'academic',
+            short: 'A 3D world with a free-look camera built in C++ with OpenGL.',
+            url: '#'
+        },
+        {
+            id: 'panda-express-pos',
+            title: 'Panda Express POS',
+            thumb: '../assets/projects/panda-express-pos/pos.png',
+            category: 'academic',
+            short: 'A makeshift point-of-sale system for Panda Express\'s menu.',
+            url: '#'
+        },
+        {
             id: 'rev-bot',
             title: 'Rev Bot',
             thumb: '../assets/projects/rev-bot/discord-log.png',

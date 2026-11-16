@@ -11,7 +11,7 @@
         },
         {
             id: 'capstone',
-            title: 'Los Alamos National Laboratory Capstone Project',
+            title: 'LANL Capstone Project',
             thumb: '../assets/projects/capstone/full-table.png',
             category: 'academic',
             short: 'Data acquisition GUI for remote data collection',
@@ -19,7 +19,7 @@
         },
         {
             id: 'cadets-web-app',
-            title: 'Texas A&M Singing Cadets Web Application',
+            title: 'Singing Cadets Web Application',
             thumb: '../assets/projects/cadets-web-app/members.png',
             category: 'academic',
             short: 'Member Management application for the Texas A&M Singing Cadets',
@@ -76,7 +76,7 @@
         {
             id: 'desmos',
             title: 'Desmos',
-            thumb: '../assets/projects/desmos/example.png',
+            thumb: '../assets/projects/desmos/folder.png',
             category: 'personal',
             short: 'How I used Desmos to help me visualize and understand math concepts',
             url: '#'

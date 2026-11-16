@@ -12,7 +12,7 @@
         {
             id: 'capstone',
             title: 'Los Alamos National Laboratory Capstone Project',
-            thumb: '../assets/projects/capstone/example.png',
+            thumb: '../assets/projects/capstone/full-table.png',
             category: 'academic',
             short: 'Data acquisition GUI for remote data collection',
             url: '#'

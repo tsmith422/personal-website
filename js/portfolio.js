@@ -4,7 +4,7 @@
         {
             id: 'reel-guard',
             title: 'ReelGuard',
-            thumb: '../assets/projects/reel-guard/example.png',
+            thumb: '../assets/projects/reel-guard/extension.png',
             category: 'academic',
             short: 'Chrome extension designed to reduce doomscrolling',
             url: './projects/project-template.html'
@@ -74,6 +74,14 @@
             url: '#'
         },
         {
+            id: 'desmos',
+            title: 'Desmos',
+            thumb: '../assets/projects/desmos/example.png',
+            category: 'personal',
+            short: 'How I used Desmos to help me visualize and understand math concepts',
+            url: '#'
+        },
+        {
             id: 'zanzibar',
             title: 'Zanzibar',
             thumb: '../assets/projects/zanzibar/title.png',
@@ -87,6 +95,14 @@
             thumb: '../assets/projects/maze-game/example.png',
             category: 'academic',
             short: 'My first JavaScript project: combining sound, graphics, and user interaction',
+            url: '#'
+        },
+        {
+            id: 'bubble-blaster',
+            title: 'Bubble Blaster',
+            thumb: '../assets/projects/bubble-blaster/example.png',
+            category: 'academic',
+            short: 'A simple Scratch 2D Shooter where you shoot bubbles created from parsing bitstrings',
             url: '#'
         }
     ];

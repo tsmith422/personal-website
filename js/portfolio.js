@@ -44,7 +44,7 @@
         {
             id: 'panda-express-pos',
             title: 'Panda Express POS',
-            thumb: '../assets/projects/panda-express-pos/pos.png',
+            thumb: '../assets/projects/panda-express-pos/customer.png',
             category: 'academic',
             short: 'Point-of-sale system for the Panda Express menu',
             url: '#'

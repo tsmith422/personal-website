@@ -20,9 +20,9 @@
         {
             id: 'cadets-web-app',
             title: 'Texas A&M Singing Cadets Web Application',
-            thumb: '../assets/projects/cadets-web-app/example.png',
+            thumb: '../assets/projects/cadets-web-app/members.png',
             category: 'academic',
-            short: 'Web application for the Texas A&M Singing Cadets',
+            short: 'Member Management application for the Texas A&M Singing Cadets',
             url: '#'
         },
         {

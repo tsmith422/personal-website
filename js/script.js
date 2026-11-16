@@ -29,8 +29,8 @@ function loadStyle() {
   const cssPrefix = prefix + 'css/';
   const assetsPrefix = prefix + 'assets/';
 
-  if (style === 'style2') {
-    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style2.css');
+  if (style !== 'style-dark') {
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style-light.css');
     if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'social/linkedin-black.png');
     if (github) github.setAttribute('src', assetsPrefix + 'social/github-black.png');
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-light.png');
@@ -69,11 +69,11 @@ function toggleStyle() {
   if (!toggleSwitch) return;
 
   if (toggleSwitch.checked) {
-    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style2.css');
+    if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style-light.css');
     if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'social/linkedin-black.png');
     if (github) github.setAttribute('src', assetsPrefix + 'social/github-black.png');
     if (favicon) favicon.setAttribute('href', assetsPrefix + 'favicon-light.png');
-    localStorage.setItem('style', 'style2');
+    localStorage.setItem('style', 'style-light');
   } else {
     if (stylesheet) stylesheet.setAttribute('href', cssPrefix + 'style-dark.css');
     if (linkedin) linkedin.setAttribute('src', assetsPrefix + 'social/linkedin.png');

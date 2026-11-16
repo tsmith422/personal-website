@@ -2,11 +2,35 @@
 (function () {
     const projects = [
         {
+            id: 'reel-guard',
+            title: 'ReelGuard',
+            thumb: '../assets/projects/reel-guard/example.png',
+            category: 'academic',
+            short: 'Chrome extension designed to reduce doomscrolling',
+            url: './projects/project-template.html'
+        },
+        {
+            id: 'capstone',
+            title: 'Los Alamos National Laboratory Capstone Project',
+            thumb: '../assets/projects/capstone/example.png',
+            category: 'academic',
+            short: 'Data acquisition GUI for remote data collection',
+            url: '#'
+        },
+        {
+            id: 'cadets-web-app',
+            title: 'Texas A&M Singing Cadets Web Application',
+            thumb: '../assets/projects/cadets-web-app/example.png',
+            category: 'academic',
+            short: 'Web application for the Texas A&M Singing Cadets',
+            url: '#'
+        },
+        {
             id: 'ray-tracer',
             title: 'Ray Tracer',
             thumb: '../assets/projects/ray-tracer/rays.png',
             category: 'academic',
-            short: 'A ray tracer built in C++ with OpenGL.',
+            short: 'C++ ray tracer built with OpenGL',
             url: '#'
         },
         {
@@ -14,7 +38,7 @@
             title: 'Free-Look World',
             thumb: '../assets/projects/free-look-world/example.png',
             category: 'academic',
-            short: 'A 3D world with a free-look camera built in C++ with OpenGL.',
+            short: 'C++ 3D world with a free-look camera',
             url: '#'
         },
         {
@@ -22,7 +46,7 @@
             title: 'Panda Express POS',
             thumb: '../assets/projects/panda-express-pos/pos.png',
             category: 'academic',
-            short: 'A makeshift point-of-sale system for Panda Express\'s menu.',
+            short: 'Point-of-sale system for the Panda Express menu',
             url: '#'
         },
         {
@@ -30,7 +54,7 @@
             title: 'Rev Bot',
             thumb: '../assets/projects/rev-bot/discord-log.png',
             category: 'personal',
-            short: 'Discord bot to automate role assignment using Google Sheets API',
+            short: 'Discord bot that automates role assignment with Google Sheets',
             url: './projects/project-template.html'
         },
         {
@@ -38,7 +62,7 @@
             title: 'Wordle (JavaFX)',
             thumb: '../assets/projects/wordle/example.png',
             category: 'academic',
-            short: 'A Wordle-like game built in Java using JavaFX and SceneBuilder',
+            short: 'Wordle-inspired game built with Java and JavaFX',
             url: '#'
         },
         {
@@ -54,7 +78,7 @@
             title: 'Zanzibar',
             thumb: '../assets/projects/zanzibar/title.png',
             category: 'academic',
-            short: 'Turning the Zanzibar card game into an interactive Python experience.',
+            short: 'Turning the Zanzibar dice game into an interactive Python experience',
             url: '#'
         },
         {
@@ -62,7 +86,7 @@
             title: 'Maze Game',
             thumb: '../assets/projects/maze-game/example.png',
             category: 'academic',
-            short: 'My first JavaScript project: combining sound, graphics, and user interaction.',
+            short: 'My first JavaScript project: combining sound, graphics, and user interaction',
             url: '#'
         }
     ];

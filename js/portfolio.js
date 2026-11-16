@@ -4,7 +4,7 @@
         {
             id: 'rev-bot',
             title: 'Rev Bot',
-            thumb: '../assets/projects/discord-log.png',
+            thumb: '../assets/projects/rev-bot/discord-log.png',
             category: 'personal',
             short: 'Discord bot to automate role assignment using Google Sheets API',
             url: './projects/project-template.html'
@@ -12,7 +12,7 @@
         {
             id: 'wordle-javafx',
             title: 'Wordle (JavaFX)',
-            thumb: '../assets/projects/wordle1.png',
+            thumb: '../assets/projects/wordle/example.png',
             category: 'academic',
             short: 'A Wordle-like game built in Java using JavaFX and SceneBuilder',
             url: '#'
@@ -20,9 +20,25 @@
         {
             id: 'datathon-2023',
             title: '2023 Datathon',
-            thumb: '../assets/projects/data2.png',
+            thumb: '../assets/projects/datathon-2023/crowd.png',
             category: 'personal',
             short: 'Keras model and data cleanup to predict patient outcomes',
+            url: '#'
+        },
+        {
+            id: 'zanzibar',
+            title: 'Zanzibar',
+            thumb: '../assets/projects/zanzibar/title.png',
+            category: 'academic',
+            short: 'Turning the Zanzibar card game into an interactive Python experience.',
+            url: '#'
+        },
+        {
+            id: 'maze-game',
+            title: 'Maze Game',
+            thumb: '../assets/projects/maze-game/example.png',
+            category: 'academic',
+            short: 'My first JavaScript project: combining sound, graphics, and user interaction.',
             url: '#'
         }
     ];

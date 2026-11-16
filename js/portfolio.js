@@ -25,22 +25,22 @@
             short: 'Member Management application for the Texas A&M Singing Cadets',
             url: '#'
         },
-        {
-            id: 'ray-tracer',
-            title: 'Ray Tracer',
-            thumb: '../assets/projects/ray-tracer/rays.png',
-            category: 'academic',
-            short: 'C++ ray tracer built with OpenGL',
-            url: '#'
-        },
-        {
-            id: 'free-look-world',
-            title: 'Free-Look World',
-            thumb: '../assets/projects/free-look-world/example.png',
-            category: 'academic',
-            short: 'C++ 3D world with a free-look camera',
-            url: '#'
-        },
+        // {
+        //     id: 'ray-tracer',
+        //     title: 'Ray Tracer',
+        //     thumb: '../assets/projects/ray-tracer/rays.png',
+        //     category: 'academic',
+        //     short: 'C++ ray tracer built with OpenGL',
+        //     url: '#'
+        // },
+        // {
+        //     id: 'free-look-world',
+        //     title: 'Free-Look World',
+        //     thumb: '../assets/projects/free-look-world/example.png',
+        //     category: 'academic',
+        //     short: 'C++ 3D world with a free-look camera',
+        //     url: '#'
+        // },
         {
             id: 'panda-express-pos',
             title: 'Panda Express POS',
@@ -48,63 +48,63 @@
             category: 'academic',
             short: 'Point-of-sale system for the Panda Express menu',
             url: '#'
-        },
-        {
-            id: 'rev-bot',
-            title: 'Rev Bot',
-            thumb: '../assets/projects/rev-bot/discord-log.png',
-            category: 'personal',
-            short: 'Discord bot that automates role assignment with Google Sheets',
-            url: './projects/project-template.html'
-        },
-        {
-            id: 'wordle-javafx',
-            title: 'Wordle (JavaFX)',
-            thumb: '../assets/projects/wordle/example.png',
-            category: 'academic',
-            short: 'Wordle-inspired game built with Java and JavaFX',
-            url: '#'
-        },
-        {
-            id: 'datathon-2023',
-            title: '2023 Datathon',
-            thumb: '../assets/projects/datathon-2023/crowd.png',
-            category: 'personal',
-            short: 'Keras model and data cleanup to predict patient outcomes',
-            url: '#'
-        },
-        {
-            id: 'desmos',
-            title: 'Desmos',
-            thumb: '../assets/projects/desmos/folder.png',
-            category: 'personal',
-            short: 'How I used Desmos to help me visualize and understand math concepts',
-            url: '#'
-        },
-        {
-            id: 'zanzibar',
-            title: 'Zanzibar',
-            thumb: '../assets/projects/zanzibar/title.png',
-            category: 'academic',
-            short: 'Turning the Zanzibar dice game into an interactive Python experience',
-            url: '#'
-        },
-        {
-            id: 'maze-game',
-            title: 'Maze Game',
-            thumb: '../assets/projects/maze-game/example.png',
-            category: 'academic',
-            short: 'My first JavaScript project: combining sound, graphics, and user interaction',
-            url: '#'
-        },
-        {
-            id: 'bubble-blaster',
-            title: 'Bubble Blaster',
-            thumb: '../assets/projects/bubble-blaster/example.png',
-            category: 'academic',
-            short: 'A simple Scratch 2D Shooter where you shoot bubbles created from parsing bitstrings',
-            url: '#'
         }
+        // {
+        //     id: 'rev-bot',
+        //     title: 'Rev Bot',
+        //     thumb: '../assets/projects/rev-bot/discord-log.png',
+        //     category: 'personal',
+        //     short: 'Discord bot that automates role assignment with Google Sheets',
+        //     url: './projects/project-template.html'
+        // },
+        // {
+        //     id: 'wordle-javafx',
+        //     title: 'Wordle (JavaFX)',
+        //     thumb: '../assets/projects/wordle/example.png',
+        //     category: 'academic',
+        //     short: 'Wordle-inspired game built with Java and JavaFX',
+        //     url: '#'
+        // },
+        // {
+        //     id: 'datathon-2023',
+        //     title: '2023 Datathon',
+        //     thumb: '../assets/projects/datathon-2023/crowd.png',
+        //     category: 'personal',
+        //     short: 'Keras model and data cleanup to predict patient outcomes',
+        //     url: '#'
+        // },
+        // {
+        //     id: 'desmos',
+        //     title: 'Desmos',
+        //     thumb: '../assets/projects/desmos/folder.png',
+        //     category: 'personal',
+        //     short: 'How I used Desmos to help me visualize and understand math concepts',
+        //     url: '#'
+        // },
+        // {
+        //     id: 'zanzibar',
+        //     title: 'Zanzibar',
+        //     thumb: '../assets/projects/zanzibar/title.png',
+        //     category: 'academic',
+        //     short: 'Turning the Zanzibar dice game into an interactive Python experience',
+        //     url: '#'
+        // },
+        // {
+        //     id: 'maze-game',
+        //     title: 'Maze Game',
+        //     thumb: '../assets/projects/maze-game/example.png',
+        //     category: 'academic',
+        //     short: 'My first JavaScript project: combining sound, graphics, and user interaction',
+        //     url: '#'
+        // },
+        // {
+        //     id: 'bubble-blaster',
+        //     title: 'Bubble Blaster',
+        //     thumb: '../assets/projects/bubble-blaster/example.png',
+        //     category: 'academic',
+        //     short: 'A simple Scratch 2D Shooter where you shoot bubbles created from parsing bitstrings',
+        //     url: '#'
+        // }
     ];
 
     function _getPrefix() {

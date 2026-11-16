@@ -1,35 +1,41 @@
-# Personal Website Project
-CSCE-331 Project 1
+# Taylor Smith's Personal Website
 
-NetID: smith.taylor
+This repository contains my personal website / online portfolio:
 
-Link: [Personal Website](https://tsmith422.github.io/personal-website/)
+**[Personal Website](https://tsmith422.github.io/personal-website/)**
 
-## Project Requirements
+The site introduces me, highlights my technical interests and experience, showcases selected projects, and provides access to my resume and contact links.
 
-- **Technologies**: HTML, CSS, JavaScript
-  - No pre-made libraries or templates (e.g., Bootstrap) allowed.
+## What is included
 
-- **Structure**:
-  - One HTML file per page.
-  - One CSS file for each style.
-  - Five required pages for non-honors, six for honors.
-  - Two CSS files for both honors and non-honors.
+- **Home** - A brief introduction and overview of my technical interests.
+- **Portfolio** - Selected projects with descriptions, technologies, and links.
+- **Qualifications** - My resume, areas of expertise, interests, and activities.
+- **About Me** - Additional background and personal information.
+- **Contact links** - Links to my GitHub and LinkedIn profiles.
+- **Theme switcher** - Light and dark themes with the selected preference saved in the browser.
 
-- **Styling**:
-  - Consistent styling throughout the website.
-  - Professional and positive image.
+## Built with
 
-- **Code Quality**:
-  - Consistent naming conventions.
-  - Consistent use of white space (indentation, spaces in control blocks, blank lines).
+- HTML
+- CSS
+- JavaScript
 
-- **Content**:
-  - One page with 300+ words describing yourself, your portfolio, qualifications, or service.
-  - Resume not included in the word count.
-  - This is part of the writing requirements and must be passed to pass the course.
+The website is a static site and does not require a build step or external framework. Shared navigation and footer content are loaded from the `partials/` directory, while the styles are organized into reusable CSS modules.
 
-## Version Control
+## Project structure
 
-- Use your personal GitHub account to store files.
-- Use GitHub for revision control on the class GitHub organization.
+```text
+.
+├── assets/       Images, icons, and other media
+├── css/          Theme and component styles
+├── docs/         Resume and other documents
+├── js/           Site behavior and theme switching
+├── pages/        Portfolio and qualifications pages
+├── partials/     Shared header and footer markup
+└── index.html    Home page
+```
+
+## Deployment
+
+The site is hosted with GitHub Pages from this repository. Updates pushed to the configured publishing branch are made available at the website link above.

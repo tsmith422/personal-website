@@ -7,7 +7,7 @@
             thumb: '../assets/projects/reel-guard/extension.png',
             category: 'academic',
             short: 'Chrome extension designed to reduce doomscrolling',
-            url: './projects/project-template.html'
+            url: './projects/reel-guard.html'
         },
         {
             id: 'capstone',

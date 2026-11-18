@@ -322,6 +322,95 @@
     background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));
 }
 
+#project-page .in-card-image {
+    cursor: zoom-in;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#project-page .in-card-image:hover {
+    transform: scale(1.01);
+}
+
+#project-page .in-card-image:focus-visible {
+    outline: 3px solid var(--nav-accent);
+    outline-offset: 4px;
+}
+
+.image-lightbox-open {
+    overflow: hidden;
+}
+
+.project-image-lightbox {
+    width: min(92vw, 1100px);
+    max-width: 92vw;
+    max-height: 92vh;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.96);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+    overflow: visible;
+}
+
+.project-image-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(4px);
+}
+
+.project-image-lightbox[open] {
+    animation: project-image-zoom 180ms ease-out;
+}
+
+.project-image-lightbox img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: calc(92vh - 36px);
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.image-lightbox-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.72);
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.image-lightbox-close:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+@keyframes project-image-zoom {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #project-page .in-card-image,
+    .project-image-lightbox[open] {
+        transition: none;
+        animation: none;
+    }
+}
+
 /* Only switch TOC spacing when the layout stacks (match the stacking breakpoint at 999px) */
 @media (max-width:999px) {
 

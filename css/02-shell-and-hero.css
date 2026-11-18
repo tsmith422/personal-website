@@ -214,7 +214,7 @@
     will-change: transform, background, box-shadow;
 }
 
-.switch input:checked + .slider::before {
+.switch input:checked+.slider::before {
     transform: translateX(calc(var(--w) - var(--h)));
 }
 
@@ -343,7 +343,7 @@ footer {
 }
 
 @media (min-width: 1300px) {
-    #qualifications-main > .extracurricular-section {
+    #qualifications-main>.extracurricular-section {
         padding-inline: 120px;
     }
 }
@@ -389,6 +389,28 @@ footer {
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
 }
 
+.subpage-hero h1 a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    transition: color 180ms ease, text-decoration-color 180ms ease, opacity 180ms ease;
+}
+
+.subpage-hero h1 a:hover {
+    color: #ffffff;
+    opacity: 1;
+    text-decoration-color: #ffffff;
+}
+
+.subpage-hero h1 a:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
 .hero-pfp {
     width: clamp(96px, 20vw, 200px);
     height: auto;
@@ -396,4 +418,3 @@ footer {
     border-radius: 50%;
     object-fit: cover;
 }
-

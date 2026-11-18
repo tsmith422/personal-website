@@ -24,7 +24,7 @@
     color: var(--text);
 }
 
-.teaso-image,
+.in-card-image,
 .nhs-image {
     object-fit: cover;
     display: block;

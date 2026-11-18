@@ -28,9 +28,7 @@
       a.addEventListener('click', (e)=>{
         e.preventDefault();
         document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
-        // update active state
-        document.querySelectorAll('#project-toc a').forEach(x=>x.classList.remove('active'));
-        a.classList.add('active');
+        a.blur();
       });
       li.appendChild(a);
       toc.appendChild(li);

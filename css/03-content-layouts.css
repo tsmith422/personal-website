@@ -317,7 +317,6 @@
     border-radius: 6px;
 }
 
-.project-toc a.active,
 .project-toc a:hover {
     color: #ffffff;
     background: linear-gradient(90deg, var(--nav-accent), var(--nav-accent-strong));

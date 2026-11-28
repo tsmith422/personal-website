@@ -397,6 +397,7 @@
         opacity: 0;
         transform: scale(0.94);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -404,6 +405,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     #project-page .in-card-image,
     .project-image-lightbox[open] {
         transition: none;
@@ -723,4 +725,3 @@
 .resume-button:hover {
     transform: scale(1.03);
 }
-

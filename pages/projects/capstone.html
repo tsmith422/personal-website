@@ -52,10 +52,27 @@
         <section class="text-card" id="requirements">
           <h2 class="card-heading">Requirements / Scope</h2>
           <div class="card-divider" aria-hidden="true"></div>
+          <p>The overal goal was to create a reliable, standalone application that could simplify equipment setup and
+            reduce the amount of manual configuration required before experiments while keeping the primary export
+            formats used for data analysis.</p>
+          <p>Key requirements included:</p>
           <ul>
-            <li>Requirement or scope item #1</li>
-            <li>Requirement or scope item #2</li>
-            <li>Requirement or scope item #3</li>
+            <li><strong>Device Discovery:</strong> Automatically detect connected oscilloscopes through USB and
+              Ethernet connections.</li>
+            <li><strong>Device Status Monitoring:</strong> Display connected devices and their configuration status
+              through a central interface.</li>
+            <li><strong>Configuration File Support:</strong> Load experiment configuration files provided by LANL and
+              apply their settings to connected equipment.</li>
+            <li><strong>Automated Configuration:</strong> Use PyVISA and SCPI commands to automatically configure
+              multiple connected
+              devices at once based on the loaded configuration files.</li>
+            <li><strong>Device Management:</strong> Allow users to assign friendly names to devices and retain those
+              names between application sessions.</li>
+            <li><strong>Logging:</strong> Record application actions, warnings, errors, and exceptions with daily
+              granularity.</li>
+            <li><strong>Data Export:</strong> Support exporting data into CSV and NUM-DAT formats at any time.</li>
+            <li><strong>Standalone Deployment:</strong> Package the application into an executable that can run locally
+              withotu requiring an external network connection.</li>
           </ul>
         </section>
 

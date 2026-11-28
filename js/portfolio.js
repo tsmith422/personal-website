@@ -23,7 +23,7 @@
             thumb: '../assets/projects/cadets-web-app/members.png',
             category: 'academic',
             short: 'Member Management application for the Texas A&M Singing Cadets',
-            url: '#'
+            url: './projects/cadets-web-app.html'
         },
         // {
         //     id: 'ray-tracer',

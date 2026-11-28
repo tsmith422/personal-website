@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>LanlVIEW</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" id="stylesheet" href="../../css/style-light.css">
+  <link rel="icon" id="favicon" href="../../assets/favicon-dark.png">
+</head>
+
+<body>
+  <div data-include="../../partials/header-project.html"></div>
+
+  <section class="subpage-hero">
+    <h1><a href="../portfolio.html" aria-label="Back to Portfolio">Portfolio</a> ≻ LanlVIEW</h1>
+  </section>
+
+  <main class="project-info" id="project-page">
+    <div class="wid-inner">
+      <div class="wid-text" style="width:100%;">
+        <!-- Intro card immediately below hero -->
+        <section class="text-card" id="intro">
+          <h2 class="card-heading">Data Acquisition Interface</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p class="lead">A standalone Python application developed for Los
+            Alamos National Laboratory to automate the configuration of
+            experimental data acquisition equipment, replacing a manual
+            LabVIEW-based workflow with a faster and more streamlined
+            interface.</p>
+          <img src="../../assets/projects/capstone/full-table.png"
+            alt="Screenshot of the LanlVIEW application interface" class="in-card-image">
+        </section>
+
+        <!-- Following cards stacked vertically -->
+        <section class="text-card" id="overview">
+          <h2 class="card-heading">Overview</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p>Setting up equipment for experiments can require manually configuring multiple oscilloscopes, which takes
+            time and leaves room for human error. Our project aims to simplify this process by providing a single
+            application that can detect connected devices and automatically configure them using experiment
+            configuration files.</p>
+
+          <img src="../../assets/projects/capstone/config.png"
+            alt="Screenshot of the LanlVIEW application configuration interface" class="in-card-image">
+
+          <p>Developed for <strong>Los Alamos National Laboratory (LANL)</strong> as part of a three-person capstone
+            team, the application uses <strong>Python, PyQt5, PyVISA, NumPy, and SCPI commands</strong> to communicate
+            with laboratory equipment over USB and Ethernet.</p>
+
+          <img src="../../assets/projects/capstone/tech-stack.png" alt="Technologies used in the LanlVIEW application"
+            class="in-card-image">
+
+          <p>As team CTO, I led the technical direction of the project, managed our GitHub workflow, and helped
+            coordinate development and integration. My main contributions included implementing configuration file
+            loading, persistent device names, applications logging, and packaging the application into a standalone
+            executable.</p>
+
+          <img src="../../assets/projects/capstone/high-level.png"
+            alt="High-level architecture diagram of the LanlVIEW application" class="in-card-image">
+
+        </section>
+
+        <section class="text-card" id="requirements">
+          <h2 class="card-heading">Requirements / Scope</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p>The overal goal was to create a reliable, standalone application that could simplify equipment setup and
+            reduce the amount of manual configuration required before experiments while keeping the primary export
+            formats used for data analysis.</p>
+          <p>Key requirements included:</p>
+          <ul>
+            <li><strong>Device Discovery:</strong> Automatically detect connected oscilloscopes through USB and
+              Ethernet connections.</li>
+            <li><strong>Device Status Monitoring:</strong> Display connected devices and their configuration status
+              through a central interface.</li>
+            <li><strong>Configuration File Support:</strong> Load experiment configuration files provided by LANL and
+              apply their settings to connected equipment.</li>
+            <li><strong>Automated Configuration:</strong> Use PyVISA and SCPI commands to automatically configure
+              multiple connected
+              devices at once based on the loaded configuration files.</li>
+            <li><strong>Device Management:</strong> Allow users to assign friendly names to devices and retain those
+              names between application sessions.</li>
+            <li><strong>Logging:</strong> Record application actions, warnings, errors, and exceptions with daily
+              granularity.</li>
+            <li><strong>Data Export:</strong> Support exporting data into CSV and NUM-DAT formats at any time.</li>
+            <li><strong>Standalone Deployment:</strong> Package the application into an executable that can run locally
+              withotu requiring an external network connection.</li>
+          </ul>
+        </section>
+
+        <section class="text-card" id="highlights">
+          <h2 class="card-heading">Highlights</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <ul>
+            <li><strong>Technical Leadership:</strong> Served as team CTO, guiding technical decisions, managing the
+              GitHub repository, reviewing pull requests, and resolving merge conflicts.</li>
+            <li><strong>Automated Device Configuration:</strong> Implemented configuration loading and application,
+              allowing multiple oscilloscopes to be configured from a single experiment file.</li>
+            <li><strong>Standalone Deployment:</strong> Helped package the Python application into an executable using
+              PyInstaller, making it easier to deploy in the laboratory environment.</li>
+            <li><strong>Hardware Testing:</strong> Personally tested the application with two oscilloscopes to verify
+              device discovery and configuration.</li>
+            <li><strong>Device Discovery Results:</strong> The deployed application successfully discovered 33 out of 35
+              devices during testing.</li>
+            <li><strong>Configuration Speed:</strong> Configuring all 33 discovered devices took approximately 10
+              seconds, compared with roughly 5 minutes per device using the previous manual process.</li>
+          </ul>
+        </section>
+        <img src="../../assets/projects/capstone/LANL Poster.png"
+          alt="Poster from the LANL Capstone Showcase highlighting the LanlVIEW application" class="in-card-image">
+      </div>
+      <!-- Table of contents (built dynamically) - placed inside wid-inner so it can sit to the right on wide screens -->
+      <aside id="project-toc" class="project-toc" aria-label="Project table of contents">
+        <section class="text-card" id="toc-card">
+          <h2 class="card-heading">Contents</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <nav>
+            <ul></ul>
+          </nav>
+        </section>
+        <section class="text-card" id="quick-info">
+          <h2 class="card-heading">Quick Info</h2>
+          <div class="card-divider" aria-hidden="true"></div>
+          <p><strong>Role:</strong> Chief Technology Officer (CTO)</p>
+          <p><strong>Technologies:</strong> Python, PyQt5, PyVISA, NumPy</p>
+          <p><strong>Status:</strong> Personal Contribution Completed (Passed
+            on to future teams)</p>
+          <p><strong>Timeline:</strong> August 2025 - December 2025</p>
+          <p><strong>Demo:</strong> <a
+              href="https://drive.google.com/file/d/1_jK14ibPJnA4frAo9Rwk3WJqCf30ZeHF/view?usp=sharing"
+              target="_blank">Live
+              Demo</a></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div data-include="../../partials/footer.html"></div>
+  <script src="../../js/includes.js"></script>
+  <script src="../../js/project-detail.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
+
+</html>

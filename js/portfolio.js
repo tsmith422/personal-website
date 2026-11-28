@@ -11,11 +11,11 @@
         },
         {
             id: 'capstone',
-            title: 'LANL Capstone Project',
+            title: 'LanlVIEW',
             thumb: '../assets/projects/capstone/full-table.png',
             category: 'academic',
             short: 'Data acquisition GUI for remote data collection',
-            url: '#'
+            url: './projects/capstone.html'
         },
         {
             id: 'cadets-web-app',

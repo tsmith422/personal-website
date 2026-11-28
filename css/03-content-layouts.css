@@ -323,7 +323,9 @@
 }
 
 #project-page .in-card-image {
+    margin-bottom: 12px;
     cursor: zoom-in;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
     transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
